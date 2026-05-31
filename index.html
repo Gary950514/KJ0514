@@ -1,0 +1,438 @@
+<!doctype html>
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<title>味遊台南 - 探索目的地</title>
+<style type="text/css">
+        /* ==========================================
+           1. 變數與基礎設定 (Reset & Variables)
+           ========================================== */
+        :root {
+            --primary-brown: #4A3B32;   /* 深沉歷史感棕色 */
+            --accent-red: #A64438;      /* 古典硃砂紅 */
+            --accent-red-hover: #8C352B;/* 按鈕懸停深紅色 */
+            --nature-green: #3B4D3C;    /* 墨綠色 */
+            --bg-beige: #F9F6F0;        /* 典雅米色背景 */
+            --card-bg: #FFFFFF;         /* 卡片純白背景 */
+            --text-muted: #6E655F;      /* 次要文字棕灰色 */
+            --shadow-color: rgba(74, 59, 50, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Georgia", "Noto Serif TC", "PingFang TC", "Microsoft JhengHei", serif; /* 整合全站主字體 */
+            background-color: var(--bg-beige);
+            color: var(--primary-brown);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ==========================================
+           2. 導覽列樣式 (Header Navigation)
+           ========================================== */
+	.aaa {
+		background-color: #DAC7A2;
+		padding: 0.8rem 2rem;
+		display: flex !important;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0;
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 25px;                      
+    }
+
+	/* --- 導覽列按鈕字體優化 --- */
+	.bbb {
+		text-decoration: none;
+		color: #4A3E3D;              
+		padding-bottom: 6px; 
+		font-family: 'Noto Serif TC', "PingFang TC", "Microsoft JhengHei", serif; 
+		font-size: 12pt;             
+		font-weight: 600;            
+		letter-spacing: 1.5px;       
+		transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); 
+		border-bottom: 2px solid transparent;
+	}
+
+	.bbb:hover {
+		color: #A94442;              
+		border-bottom: 2px solid #A94442; 
+	}
+
+	.bbb.current {
+		color: #A94442;              
+		border-bottom: 2px solid #A94442; 
+		font-weight: bold;
+	}
+    .bbb:active {
+        border-bottom: 2px solid #A64438; 
+        color: #A64438;
+    }
+
+    /* 評論膠囊按鈕 */
+    .fff.red-btn {
+        background-color: #A64438;     
+        font-size: 11pt;
+        color: #ffffff !important;     
+        padding: 8px 20px;          
+        border-radius: 30px;            
+        font-weight: bold;           
+        text-decoration: none;       
+        display: inline-block;       
+        box-shadow: 0 4px 10px rgba(166, 68, 56, 0.2);
+        transition: all 0.2s ease;
+    }
+
+    .fff.red-btn:hover {
+        background-color: #8C352B;     
+        transform: translateY(-1px);
+    }
+
+        /* ==========================================
+           3. 主版面佈局 (Layout & Typography)
+           ========================================== */
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto 0 auto; 
+            padding: 0 1rem;
+            flex: 1; /* 確保推開頁尾 */
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-brown);
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .page-subtitle::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-red);
+            margin: 0.8rem auto 0;
+        }
+
+        /* 網格系統 */
+.grid-wrapper {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 強制均分 3 等份 */
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        /* 針對手機平板等小螢幕的 RWD 自動變回一欄，避免卡片被擠扁 */
+        @media (max-width: 992px) {
+            .grid-wrapper {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            }
+        }
+        /* ==========================================
+           4. 卡片與標籤樣式 (Card & Tags)
+           ========================================== */
+        .spot-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            border: 1px solid rgba(74, 59, 50, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .spot-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(74, 59, 50, 0.15);
+        }
+
+        .card-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-content {
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .tag {
+            align-self: flex-start;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.25rem 0.9rem;
+            border-radius: 30px;         
+            margin-bottom: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        /* 分類標籤自動根據順序上色 */
+        .spot-card:nth-child(1) .tag { background-color: rgba(166, 68, 56, 0.15); color: var(--accent-red); }    
+        .spot-card:nth-child(2) .tag { background-color: rgba(74, 59, 50, 0.15); color: var(--primary-brown); } 
+        .spot-card:nth-child(3) .tag { background-color: rgba(166, 68, 56, 0.15); color: var(--accent-red); }    
+        .spot-card:nth-child(4) .tag { background-color: rgba(166, 68, 56, 0.15); color: var(--accent-red); }    
+        .spot-card:nth-child(5) .tag { background-color: rgba(59, 77, 60, 0.15); color: var(--nature-green); }   
+
+        .spot-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-brown);
+            margin-bottom: 0.8rem;
+        }
+
+        .spot-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 1.8rem;
+            flex-grow: 1;
+            text-align: justify;
+        }
+
+        .enter-btn {
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+            background-color: var(--nature-green);
+            color: var(--bg-beige);
+            padding: 0.75rem;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .enter-btn:hover {
+            background-color: var(--accent-red);
+        }
+
+        .enter-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* ==========================================
+           5. 進去網頁的「味遊台南」四大字震撼開場區
+           ========================================== */
+        .hero-welcome {
+            height: 100vh;                 
+            background: linear-gradient(rgba(59, 77, 60, 0.6), rgba(74, 59, 50, 0.7)), 
+                        url('home.jpg') center/cover no-repeat fixed; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--bg-beige);        
+            padding: 0 1rem;
+            position: relative;
+        }
+
+        .hero-title {
+            font-family: Cambria, "Hoefler Text", "Baskerville", "Microsoft JhengHei", serif;
+            font-size: 4.8rem;             
+            font-weight: bold;
+            letter-spacing: 12px;          
+            margin-bottom: 1rem;
+            text-shadow: 2px 4px 10px rgba(42, 33, 27, 0.6); 
+            
+            animation: fadeInWelcome 1.5s ease-out forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            opacity: 0;
+            text-shadow: 1px 2px 5px rgba(0,0,0,0.4);
+            
+            animation: fadeInSubtitle 1.2s ease-out 0.5s forwards;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            font-size: 2rem;
+            opacity: 0.8;
+            animation: bounceArrow 2s infinite; 
+            user-select: none;
+        }
+
+        @keyframes fadeInWelcome {
+            0% {
+                opacity: 0;
+                transform: translateY(30px); 
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInSubtitle {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes bounceArrow {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+	
+	.logo-box {
+		display: flex;
+		align-items: center;
+		gap: 12px;                 
+	}
+
+	.logo-img {
+		height: 55px;              
+		width: auto;               
+		display: block;
+	}
+
+	.logo-text {
+		font-family: 'Noto Serif TC', Cambria, "Times New Roman", serif; 
+		font-size: 22pt;           
+		font-weight: bold;         
+		color: #3A2E2B;            
+		letter-spacing: 2px;       
+		text-shadow: 1px 1px 0px #fff, 2px 2px 0px #D4A373; 
+	}
+
+	/* --- 頁尾優化 (已成功同步字體風格) --- */
+    .site-footer {
+        background-color: #2A362D; /* 深墨綠色結尾 */
+        color: #E6E1D6;            
+        width: 100%;
+        margin-top: 6rem;          
+		font-family: "Georgia", "Noto Serif TC", "PingFang TC", serif; /* 同步襯線英文字體與主視覺 */
+    }
+	.footer-content {
+        max-width: 1200px;         
+        margin: 0 auto;            
+        padding: 25px 20px;        
+        text-align: center;        
+        font-size: 11pt;           
+        line-height: 1.6;
+    }
+
+    </style>
+</head>
+<body>
+
+<header class="aaa">
+    <div class="logo-box">
+        <img src="Home Logo.png" alt="LOGO" class="logo-img">
+        <span class="logo-text">味遊台南</span>
+    </div>
+    
+    <nav class="nav-links">
+			<a href="index.html" class="bbb current">首頁</a>
+			<a href="Home3.html" class="bbb">新聞</a>
+			<a href="show_post.html" class="bbb">評論區</a>
+		    <a href="Home4.html" class="bbb">聯絡我們</a>
+			<a href="home2.html" class="bbb">關於我們</a>
+			<a href="post.html" class="fff red-btn">評論</a>
+    </nav>
+</header>
+
+    <section class="hero-welcome">
+        <h1 class="hero-title">味遊台南</h1>
+        <p class="hero-subtitle">不止甜，更有深度。陪你尋回府城慢活的老靈魂</p>
+        <div class="scroll-indicator">↓</div>
+    </section>
+
+    <div class="container">
+        <h1 class="page-title">探索你的下一個目的地</h1>
+        <p class="page-subtitle">請選擇一個想深入了解的熱門景點</p>
+        
+        <div class="grid-wrapper">
+            <div class="spot-card">
+                <div class="card-image" style="background-image: url('home2.1.jpg');"></div>
+                <div class="card-content">
+                    <span class="tag">歷史文化</span>
+                    <h2 class="spot-title">神農街</h2>
+                    <p class="spot-desc">走進時光隧道般的百年老街，華燈初上時紅燈籠亮起，散發迷人的復古與文創氣息。</p>
+                    <a href="001.php" class="enter-btn">進入查看</a>
+                </div>
+            </div>
+
+            <div class="spot-card">
+                <div class="card-image" style="background-image: url('home2.2.jpg');"></div>
+                <div class="card-content">
+                    <span class="tag">美食經典</span>
+                    <h2 class="spot-title">國華街</h2>
+                    <p class="spot-desc">台南小吃的一級戰區！從牛肉湯、碗粿到割包，滿足你對傳統府城美味的所有渴望。</p>
+                    <a href="002.php" class="enter-btn">進入查看</a>
+                </div>
+            </div>
+
+            <div class="spot-card">
+                <div class="card-image" style="background-image: url('home2.3.jpg');"></div>
+                <div class="card-content">
+                    <span class="tag">歷史文化</span>
+                    <h2 class="spot-title">赤崁樓</h2>
+                    <p class="spot-desc">建於荷治時期的普羅民遮城，見證了府城的滄桑歷史，庭園內的御龜碑更是必看古蹟。</p>
+                    <a href="003.php" class="enter-btn">進入查看</a>
+                </div>
+            </div>
+
+            <div class="spot-card">
+                <div class="card-image" style="background-image: url('home2.4.jpg');"></div>
+                <div class="card-content">
+                    <span class="tag">歷史文化</span>
+                    <h2 class="spot-title">安平老街</h2>
+                    <p class="spot-desc">台灣最古老的第一街，紅磚斑駁的巷弄與古色古香的老屋，訴說著大航海時代的府城記憶。</p>
+                    <a href="004.php" class="enter-btn">進入查看</a>
+                </div>
+            </div>
+
+            <div class="spot-card">
+                <div class="card-image" style="background-image: url('home2.5.jpg');"></div>
+                <div class="card-content">
+                    <span class="tag">美食經典</span>
+                    <h2 class="spot-title">永樂市場</h2>
+                    <p class="spot-desc">充滿老台北與台南混血感的老市場，二樓別有洞天的復古店鋪，是探尋在地生活感的絕佳去處。</p>
+                    <a href="005.php" class="enter-btn">進入查看</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+		<div class="footer-content">
+			<p>© 2026 味遊台南 版權所有 | 聯絡我們：service@stust.edu.tw <br>
+			作者：4B3F0001 王凱均　4B3F0056 張馨</p>
+		</div>
+	</footer>
+</body>
+</html>

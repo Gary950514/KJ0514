@@ -1,0 +1,326 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>味遊台南 - 國華街美食</title>
+    <!-- 補上全站字體引用連結 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+<style type="text/css">
+    /* ==========================================
+       【全域樣式：純色低飽和溫潤背景】
+       ========================================== */
+    body {
+        background-color: #F4F1EA; /* 溫潤米色基底，柔和不刺眼 */
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        font-family: "Georgia", "Noto Serif TC", "PingFang TC", "Microsoft JhengHei", serif; /* 整合全站主字體 */
+    }
+
+    /* 主體內容容器：沉穩質感的白幅區塊 */
+    .main-wrapper {
+        max-width: 1100px;
+        width: 90%;
+        margin: 40px auto;
+        background-color: #FFFFFF; /* 純白區塊，讓歷史色系與照片更突出 */
+        box-shadow: 0 10px 30px rgba(92, 75, 65, 0.05); /* 帶有微弱棕色調的柔和陰影 */
+        border-radius: 8px;
+        padding: 60px 40px;
+        box-sizing: border-box;
+    }
+
+    /* ==========================================
+       【導覽列】低飽和溫潤配色（與上一頁一模一樣）
+       ========================================== */
+	.aaa {
+		background-color: #DAC7A2;
+		padding: 0.8rem 2rem;
+		display: flex !important;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0;
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+
+	/* --- 導覽列按鈕字體優化 --- */
+	.bbb {
+		text-decoration: none;
+		color: #4A3E3D;              /* 改為優雅的深焙咖啡色，與 LOGO 字體呼應，辨識度更高 */
+		padding-bottom: 6px; 
+		font-family: 'Noto Serif TC', "PingFang TC", "Microsoft JhengHei", serif; /* 優先使用襯線體，帶有文青感 */
+		font-size: 12pt;             /* 微調字體大小，看起來更精緻 */
+		font-weight: 600;            /* 半粗體，讓字體清晰 */
+		letter-spacing: 1.5px;       /* 稍微拉開字距，營造現代呼吸感 */
+		transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); /* 讓滑鼠懸停動畫更柔順 */
+		border-bottom: 2px solid transparent;
+	}
+
+	/* 滑鼠移上去的狀態 */
+	.bbb:hover {
+		color: #A94442;              /* 懸停時變成你設定的「安平磚紅」變數顏色 */
+		border-bottom: 2px solid #A94442; 
+	}
+
+	/* 目前所在頁面的狀態（例如：關於我們） */
+	.bbb.current {
+		color: #A94442;              /* 啟用狀態同樣使用安平磚紅 */
+		border-bottom: 2px solid #A94442; /* 下底線與文字同色 */
+		font-weight: bold;
+	}
+
+    .bbb:active {
+        border-bottom: 2px solid #75332B; 
+        color: #75332B;
+    }
+
+    /* 評論膠囊按鈕 */
+    .fff.red-btn {
+        background-color: #9E4A3F; /* 古典磚紅 */
+        font-size: 11pt;
+        color: #ffffff !important;     
+        padding: 8px 22px;          
+        border-radius: 30px;            
+        font-weight: bold;           
+        text-decoration: none;       
+        display: inline-block;       
+        box-shadow: 0 4px 10px rgba(158, 74, 63, 0.15);
+        transition: all 0.2s ease;
+    }
+
+    .fff.red-btn:hover {
+        background-color: #75332B; /* 懸停變深磚紅 */
+        transform: translateY(-1px);
+    }
+
+    /* ==========================================
+       【內文與圖片樣式：完美套用歷史沉穩感】
+       ========================================== */
+    .container {
+        color: #2A362D; /* 深墨綠色，展現古磚苔痕的歷史感 */
+        width: 100%;
+        margin: 0 auto 40px auto;           
+        box-sizing: border-box;
+        font-size: 22pt;
+        font-weight: bold;
+        text-align: center;
+        line-height: 1.5;
+    }
+
+    .center-img {
+        display: block;    
+        margin: 35px auto; 
+        max-width: 100%;   
+        height: auto;      
+        border-radius: 4px;
+    }
+
+    .text {
+        width: 100%;
+        margin: 25px auto;        
+        padding: 0 40px; 
+        box-sizing: border-box;
+        font-size: 13pt;
+        line-height: 1.8; /* 舒適的行高 */
+        text-align: center;       
+        display: block;
+        color: #4A4A4A; /* 深灰內文 */
+    }
+
+    /* 特色標題區塊 */
+	.text-bg {
+        color: #2A362D;           /* 深墨綠字 */
+        background-color: #E2DDD5; /* 低飽和溫潤米灰 */
+        padding: 15px 25px;
+        border-radius: 4px;        
+        font-size: 16pt;
+        display: block;            
+        text-align: left;          /* 文字靠左對齊 */
+        font-weight: bold;
+        border-left: 12px solid #9E4A3F; /* 左邊粗邊框（古典磚紅） */
+        height: auto;      
+        width: 100%;
+        max-width: 1000px;          
+        margin: 40px auto 20px auto; /* 區塊置中 */
+        box-sizing: border-box;
+    }
+
+	.text2{
+		color: #2A362D;           /* 深墨綠字 */
+		padding: 15px 25px;
+		border-radius: 4px;
+		font-size: 16pt;
+		display: block;
+		text-align: left;          
+		font-weight: bold;
+		border-left: 12px solid #C5896F; /* 左邊粗邊框 */
+		height: auto;
+		width: 100%;
+		max-width: 1000px;          
+		margin: 40px auto 20px auto; 
+		box-sizing: border-box;
+		background-color: #F4EBE1;
+    }
+	
+	.text3{
+        color: #2A362D;             /* 深墨綠字 */
+        font-size: 16pt;            
+        font-weight: bold;
+        text-align: left;           
+        border-left: 8px solid #E3519E ; /* 左側裝飾線 */
+        padding-left: 15px;         
+        margin: 45px auto 20px auto;
+        width: 100%;
+        max-width: 970px;           
+        box-sizing: border-box;
+        line-height: 1.4;
+    }
+
+	.logo-box {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+
+	.logo-img {
+		height: 55px;              
+		width: auto;               
+		max-height: 100%;          
+	}
+
+	.logo-text {
+		font-family: 'Noto Serif TC', Cambria, "Times New Roman", serif; 
+		font-size: 22pt;       
+		font-weight: 700;      
+		color: #3A2E2B;        
+		letter-spacing: 4px;   
+		text-shadow: 1px 1px 0px #fff, 2px 2px 0px #D4A373; 
+	}
+
+	/* --- 頁尾優化 (已成功同步字體風格) --- */
+	.site-footer {
+		background-color: #2A362D; /* 深墨綠色結尾 */
+		color: #E6E1D6;            
+		width: 100%;
+		margin-top: auto;          
+		font-family: "Georgia", "Noto Serif TC", "PingFang TC", serif; /* 同步襯線字型組合 */
+	}
+
+	.footer-content {
+		max-width: 1200px;         
+		margin: 0 auto;            
+		padding: 25px 20px;        
+		text-align: center;        
+		font-size: 11pt;           
+		line-height: 1.6;
+	}
+
+</style>
+</head>
+
+<body>
+    
+	<header class="aaa">
+		<div class="logo-box">
+			<img src="Home Logo.png" alt="LOGO" class="logo-img">
+			<span class="logo-text">味遊台南</span>
+		</div>
+		<nav class="nav-links">
+			<a href="index.html" class="bbb">首頁</a>
+			<a href="Home3.html" class="bbb">新聞</a>
+			<a href="show_post.html" class="bbb">評論區</a>
+		    <a href="Home4.html" class="bbb">聯絡我們</a>
+			<a href="home2.html" class="bbb">關於我們</a>
+			<a href="post.html" class="fff red-btn">評論</a>
+		</nav>
+	</header>
+
+	<!-- 主體白色襯底包覆區塊 -->
+	<div class="main-wrapper">
+		<p class="container">【國華街美食】必吃在地美食推薦總整理給大家參考一番</p>
+		<img class="center-img" src="002/01.jpg" width="1000" height="1200" alt="國華街美食1" />
+		
+		<p class="text">台南的國華街到底有哪些不可錯過的美食？這篇為你精選整理最值得一試的「國華街美食」清單，讓你吃遍人氣必吃美味！國華街上美食琳瑯滿目，根本三天三夜也吃不完。推薦必吃店家包括富盛號碗粿、金八寶、布萊恩紅茶、金得春捲，以及春蚵嗲等，通通都是網路上超夯的人氣名店。來到國華街，絕對不能錯過這些經典美味，一次吃個過癮才算來過！</p>
+
+		<p class="text-bg">國華街美食：交通停車</p>
+
+		<img class="center-img" src="002/02.jpg" width="1000" height="1200" alt="國華街交通" />
+		<p class="text">國華街美食交通資訊，自行開車前往的話，建議將車停在海安路上的地下停車場，步行前往國華街相當方便。若搭乘火車，可從台南車站出站後步行約25分鐘抵達，但建議直接搭乘計程車前往，省時又輕鬆。使用衛星導航時，直接設定「國華街」即可抵達目的地。國華街美食是馬路兩旁店家，開車族可停在圓環或海安路，步行五分鐘到達國華街美食。</p>
+		
+		<img class="center-img" src="002/03.jpg" width="1000" height="1200" alt="國華街美食2" />
+		<p class="text">國華街的美食非常集中，主要分布在國華街靠近民權路三段前後這一大段路上。沿途走逛，不論是小吃、飲料還是特色餐點，都能一一發掘，是台南美食愛好者絕不能錯過的寶地。</p>
+		    
+		<p class="text-bg">2026國華街美食推薦清單</p><br>
+		
+		<p class="text2">1.鼎富發豬油拌飯</p>
+		<img class="center-img" src="002/04.jpg" width="1000" height="1200" alt="鼎富發1" />
+		<p class="text">「國華街美食」推薦鼎富發豬油拌飯，菜色皆是現場烹調保證好吃，保證讓你吃得安心又開心，來這裡絕對不能錯過豬油拌飯、雞肉串和丸子湯，保證每一道都無雷！</p>
+		<img class="center-img" src="002/05.jpg" width="1000" height="1200" alt="鼎富發2" />   
+		<p class="text">用餐環境就是比較復古一點的小吃店，注意的是沒有冷氣空調，夏天來吃肯定很熱，然後桌位數蠻多的，但據說還是無法消化掉假日的用餐人潮。</p>
+		<img class="center-img" src="002/06.jpg" width="1000" height="1200" alt="鼎富發3" />    
+		
+		<p class="text">這樣是一個套餐，有飯有湯有肉，重點是只要110元實在有夠便宜的！</p>
+		<img class="center-img" src="002/07.jpg" width="1000" height="1200" alt="國華街景1" /> 
+		<p class="text">真的算很好吃！米飯煮的超棒又Ｑ又香，加上有不會太顯油膩的豬油浸潤其中，攪拌均勻送入嘴內，口中立馬香氣四溢。</p>
+		<p class="text3">餐廳名稱：鼎富發豬油拌飯<br>
+		地址：台南市中西區大德街38號<br>
+		營業時間：10:30–19:30</p><br>
+
+		<p class="text2">2.承樑老黑糖滷味</p>
+		<img class="center-img" src="002/08.jpg" width="1000" height="1200" alt="國華街景2" />    
+		<p class="text">主打的是外面少見的黑糖滷製，不僅香氣特別濃郁，每一種滷味都呈現出一種亮晶晶的琥珀色，看著就讓人猛吞口水，這次直接來到他們的店面選購，發現環境真的乾淨到沒話說，所有的滷味都是職人現滷，經過真空包裝才送到客人手上。不管是自己吃還是當作伴手禮送人，都超級有面子！</p>
+		<img class="center-img" src="002/09.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<p class="text">小兔偷偷跑去廚房看，天啊！那一鍋正在翻滾的豬腳也太壯觀了吧！一整鍋熱氣騰騰的滷汁，飄散出淡淡的黑糖與中藥香氣，每一塊豬腳都滷到色澤均勻，那個Ｑ彈的模樣，光看照片就覺得香！</p>
+		<p class="text3">店名：承樑老黑糖滷味<br>
+		地址：臺南市中西區忠義路二段223號1樓<br>
+		電話號碼：0905 169 009<br>
+		營業時間：10:00-18:00<br>
+		公休時間：星期一公休</p><br>
+
+		<p class="text2">3.邱家小卷米粉</p>
+		<img class="center-img" src="002/10.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<p class="text">「國華街美食」推薦邱家小卷米粉，新鮮小卷入口，彈牙好咬斷，絕對不會像是咬橡皮筋一樣難吃，湯頭鮮美甘甜，略帶點海鮮味，內用要排30分鐘起跳不過份，要注意是目前已經搬到新的店址了，台南市中西區國華街三段251號。</p>
+		<img class="center-img" src="002/11.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<p class="text">小卷看起來好新鮮喔！外表的光澤正閃閃發亮。</p>
+		<img class="center-img" src="002/12.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<img class="center-img" src="002/13.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<p class="text">不用等很久餐點就上桌，邱家小卷米粉這一碗120元。你們看這個小卷每一塊都切得很厚實， 咬下去那種脆口的感覺真的騙不了人。這就是產地直送的新鮮啊～完全不需要多餘的調味就很甜。</p>
+		<p class="text3">店名：邱家小卷米粉<br>
+		地址：臺南市中西區國華街三段251號<br>
+		電話號碼： 06 221 051<br>
+		營業時間：11:00-17:00<br>
+		公休時間：星期一公休</p><br>
+
+		<p class="text2">4.金得春捲</p>
+		<img class="center-img" src="002/14.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<p class="text">「國華街美食」推薦超人氣的金得春捲！每一捲只要45元，內餡豐富、多層次，CP值超高。因為太受歡迎，經常大排長龍，建議一早就來卡位，才能輕鬆享用這道在地人氣美味。</p>
+		<img class="center-img" src="002/15.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<p class="text">大陣仗的內餡好繽紛，光看到花生粉就加分很多！花生粉真的是靈魂角色。</p>
+		<img class="center-img" src="002/16.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<img class="center-img" src="002/17.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<p class="text">包好後還會在煎台上過一下，確保拿在客人手上是溫熱的，這樣才是春捲最佳食用溫度。</p>
+		<img class="center-img" src="002/18.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<p class="text">捲起來超級厚的啦！這一個吃下肚基本上就飽了，不用想再去別家吃東西。</p>
+		<img class="center-img" src="002/19.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<p class="text">你看看這內餡都爆開了，有蝦子、生菜、豆皮之類，口感還不錯吃，但真的要趁熱吃，冷掉會爛爛的。</p>
+		<p class="text3">店名：金得春捲<br>
+		地址：台南市中西區民族路三段19號<br>
+		營業時間：07:00-17:00<br>
+		公休時間：星期二公休</p><br>
+	</div>
+    
+	<footer class="site-footer">
+		<div class="footer-content">
+			<p>© 2026 味遊台南 版權所有 | 聯絡我們：service@stust.edu.tw <br>
+			作者：4B3F0001 王凱均　4B3F0056 張馨</p>
+		</div>
+	</footer>
+</body>
+</html>

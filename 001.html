@@ -1,0 +1,284 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>味遊台南 - 神農街導覽</title>
+    <!-- 補上全站字體引用連結 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+<style type="text/css">
+    /* ==========================================
+       【全域樣式與優化】
+       ========================================== */
+    body {
+        background-image: #F4F1EA;
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-color: #F4F1EA; /* 溫潤米色基底 */
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        font-family: "Georgia", "Noto Serif TC", "PingFang TC", "Microsoft JhengHei", serif; /* 整合全站主字體 */
+    }
+
+    /* 主體內容容器：加上微透明米色襯底，提升文字與圖片的質感與可讀性 */
+    .main-wrapper {
+        max-width: 1100px;
+        width: 90%;
+        margin: 40px auto;
+        background-color: #FFFFFF; 
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        border-radius: 8px;
+        padding: 60px 40px;
+        box-sizing: border-box;
+    }
+
+    /* ==========================================
+       【導覽列】低飽和溫潤配色優化
+       ========================================== */
+	.aaa {
+		background-color: #DAC7A2;
+		padding: 0.8rem 2rem;
+		display: flex !important;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0;
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+
+	/* --- 導覽列按鈕字體優化 --- */
+	.bbb {
+		text-decoration: none;
+		color: #4A3E3D;              /* 改為優雅的深焙咖啡色，與 LOGO 字體呼應，辨識度更高 */
+		padding-bottom: 6px; 
+		font-family: 'Noto Serif TC', "PingFang TC", "Microsoft JhengHei", serif; /* 優先使用襯線體，帶有文青感 */
+		font-size: 12pt;             /* 微調字體大小，看起來更精緻 */
+		font-weight: 600;            /* 半粗體，讓字體清晰 */
+		letter-spacing: 1.5px;       /* 稍微拉開字距，營造現代呼吸感 */
+		transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); /* 讓滑鼠懸停動畫更柔順 */
+		border-bottom: 2px solid transparent;
+	}
+
+	/* 滑鼠移上去的狀態 */
+	.bbb:hover {
+		color: #A94442;              /* 懸停時變成你設定的「安平磚紅」變數顏色 */
+		border-bottom: 2px solid #A94442; 
+	}
+
+	/* 目前所在頁面的狀態（例如：關於我們） */
+	.bbb.current {
+		color: #A94442;              /* 啟用狀態同樣使用安平磚紅 */
+		border-bottom: 2px solid #A94442; /* 下底線與文字同色 */
+		font-weight: bold;
+	}
+
+    .bbb:active {
+        border-bottom: 2px solid #75332B; 
+        color: #75332B;
+    }
+
+    /* 評論膠囊按鈕 */
+    .fff.red-btn {
+        background-color: #9E4A3F; /* 古典磚紅 */
+        font-size: 11pt;
+        color: #ffffff !important;     
+        padding: 8px 22px;          
+        border-radius: 30px;            
+        font-weight: bold;           
+        text-decoration: none;       
+        display: inline-block;       
+        box-shadow: 0 4px 10px rgba(158, 74, 63, 0.2);
+        transition: all 0.2s ease;
+    }
+
+    .fff.red-btn:hover {
+        background-color: #75332B; /* 懸停變深磚紅 */
+        transform: translateY(-1px);
+        box-shadow: 0 6px 14px rgba(158, 74, 63, 0.3);
+    }
+
+    /* ==========================================
+       【內文與圖片樣式優化】
+       ========================================== */
+    .container {
+        color: #2A362D; /* 深墨綠色，比純黑更有故事感 */
+        width: 100%;
+        margin: 0 auto 40px auto;           
+        box-sizing: border-box;
+        font-size: 22pt;
+        font-weight: bold;
+        text-align: center;
+        line-height: 1.5;
+    }
+
+    .center-img {
+        display: block;    
+        margin: 35px auto; 
+        max-width: 100%;   
+        height: auto;      
+        border-radius: 4px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* 給圖片微弱陰影增加立體感 */
+    }
+
+    .text {
+        width: 100%;
+        margin: 25px auto;        
+        padding: 0 40px; /* 適度緊縮內文寬度，提升閱讀舒適度 */
+        box-sizing: border-box;
+        font-size: 13pt;
+        line-height: 1.8; /* 放寬行高，閱讀更流暢 */
+        text-align: center;       
+        display: block;
+        color: #4A4A4A; /* 深灰內文 */
+    }
+
+    /* 特色標題區塊 */
+	.text-bg {
+        color: #2A362D;           /* 深墨綠字 */
+        background-color: #E2DDD5; /* 低飽和溫潤米灰 */
+        padding: 15px 25px;
+        border-radius: 4px;        
+        font-size: 16pt;
+        display: block;            
+        text-align: left;          /* 文字改成靠左對齊 */
+        font-weight: bold;
+        border-left: 12px solid #9E4A3F; /* 左邊粗邊框（古典磚紅） */
+        height: auto;      
+        width: 100%;
+        max-width: 1000px;          
+        margin: 40px auto 20px auto; /* 區塊置中 */
+        box-sizing: border-box;
+    }
+
+	.logo-box {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+
+	.logo-img {
+		height: 55px;              
+		width: auto;               
+		max-height: 100%;          
+	}
+
+	.logo-text {
+		font-family: 'Noto Serif TC', Cambria, "Times New Roman", serif; 
+		font-size: 22pt;       
+		font-weight: 700;      
+		color: #3A2E2B;        
+		letter-spacing: 4px;   
+		text-shadow: 1px 1px 0px #fff, 2px 2px 0px #D4A373; 
+	}
+
+	/* --- 頁尾優化 (已成功同步字體風格) --- */
+	.site-footer {
+		background-color: #2A362D; /* 深墨綠色結尾 */
+		color: #E6E1D6;            
+		width: 100%;
+		margin-top: auto;          
+		font-family: "Georgia", "Noto Serif TC", "PingFang TC", serif; /* 同步襯線字型組合 */
+	}
+
+	.footer-content {
+		max-width: 1200px;         
+		margin: 0 auto;            
+		padding: 25px 20px;        
+		text-align: center;        
+		font-size: 11pt;           
+		line-height: 1.6;
+	}
+</style>
+</head>
+
+<body>
+    
+	<header class="aaa">
+		<div class="logo-box">
+			<img src="Home Logo.png" alt="LOGO" class="logo-img">
+			<span class="logo-text">味遊台南</span>
+		</div>
+		<nav class="nav-links">
+			<a href="index.html" class="bbb">首頁</a>
+			<a href="Home3.html" class="bbb">新聞</a>
+			<a href="show_post.html" class="bbb">評論區</a>
+		    <a href="Home4.html" class="bbb">聯絡我們</a>
+			<a href="home2.html" class="bbb">關於我們</a>
+			<a href="post.html" class="fff red-btn">評論</a>
+		</nav>
+	</header>
+
+	<div class="main-wrapper">
+		<p class="container">台南旅遊景點推薦｜【神農街】超夯文創老街！<br>到訪台南旅遊不可錯過的必逛景點，值得細細品味的特色文創，每個小店都藏著滿滿的驚喜！</p>
+		
+		<img class="center-img" src="001/01.jpg" width="1000" height="1200" alt="神農街景1" />
+		
+		<p class="text">
+			今天要帶大家走訪的是台南保留老宅風格的「神農老街」<br><br>
+			到了台南除了品嚐小吃美食，不可錯過的還有熱門的文青打卡景點，以及超夯的文創老街<br><br>
+			像是充斥濃厚懷舊復古氛圍的「神農街」，也是到訪台南旅遊不可錯過的必逛景點<br><br>
+			結合了古蹟歷史的建築和在地傳統文化，古都特色鮮明，吃喝玩樂選擇多元，還充滿著台南人獨有的濃厚人情味<br><br>
+			每個小店都能發掘特色文創，有些是傳承下來的工藝技術，也有些是新舊文化激盪出的創意結合<br><br>
+			每個角落都值得路過的旅人放慢腳步，細細品味，感受台南特有的風格特色，一起來場文青旅行吧
+		</p>
+
+		<p class="text-bg">❝ 老街古宅融合特色文創—神農街 ❞</p>
+
+		<img class="center-img" src="001/02.jpg" width="1000" height="1200" alt="神農街景2" />
+		
+		<p class="text">
+			古色古香的老宅街道裡，有住家、文創小店、民宿...等，保留了傳統歷史與創新的結合<br><br>
+			復古懷舊與現代的交錯感，別有一番風味，更是近幾年超夯的必逛文創聖地<br><br>
+			許多文創小店都自有不同的特色，很值得放下腳步，慢慢悠晃，去享受這樣獨特的氛圍
+		</p>
+		
+		<img class="center-img" src="001/03.jpg" width="1000" height="1200" alt="神農街景3" />
+		<img class="center-img" src="001/04.jpg" width="1000" height="1200" alt="神農街景4" /> 
+		
+		<p class="text">
+			「神農文創市集」內展售了各式文創小物，很值得來挖寶<br><br>
+			雖然市集佔地不大，卻很溫暖，每個攤位的老闆都很親切，能感受到台南人的熱情與濃厚的人情味<br><br>
+			就算只是短暫的佇足閒晃，也讓人倍感放鬆，很舒服的氛圍感～～
+		</p>
+		
+		<img class="center-img" src="001/05.jpg" width="1000" height="1200" alt="神農街景5" /> 
+		
+		<p class="text">市集走到底，還能欣賞懷舊感的文創古物，各式擺件看起來都充滿濃厚的懷舊氛圍</p>
+		
+		<img class="center-img" src="001/06.jpg" width="1000" height="1200" alt="神農街景6" /> 
+		<img class="center-img" src="001/07.jpg" width="1000" height="1200" alt="神農街景7" /> 
+		<img class="center-img" src="001/08.jpg" width="1000" height="1200" alt="神農街景8" /> 
+		
+		<p class="text">
+			每間小店都各有特色，同時也帶出了新的氣息，讓老宅街道有了新的年輕的生命力<br><br>
+			新舊並存激盪出的特色，也是台南最美最具文化特色的風景，讓人忍不住想多看多感受這迷人的魅力
+		</p>
+		
+		<img class="center-img" src="001/09.jpg" width="1000" height="1200" alt="神農街景9" /> 
+		<img class="center-img" src="001/10.jpg" width="1000" height="1200" alt="神農街景10" /> 
+		<img class="center-img" src="001/11.jpg" width="1000" height="1200" alt="神農街景11" /> 
+		
+		<p class="text">
+			夜晚神農街更會擺脫白天的文青氣息，搖身變成不夜城，小巷內滿滿都是特色酒吧<br><br>
+			到訪台南旅遊不可錯過的必逛景點，每次到訪光臨都能有不一樣的感受與驚喜，絕對滿足相機也滿足心靈的享受<br><br>
+			藏著滿滿的驚喜！很值得細細品味的特色文創與文化激盪
+		</p>
+	</div>
+    
+	<footer class="site-footer">
+		<div class="footer-content">
+			<p>© 2026 味遊台南 版權所有 | 聯絡我們：service@stust.edu.tw <br>
+			作者：4B3F0001 王凱均　4B3F0056 張馨</p>
+		</div>
+	</footer>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<?php
+  require_once("dbtools.inc.php");
+  date_default_timezone_set("Asia/Taipei");	
+
+  // 初始化一個變數，用來判斷是否顯示成功訊息
+  $show_success = false;
+
+  // 判斷使用者有沒有按下送出（有沒有 POST 資料過來）
+  if (isset($_POST["author"])) {
+      $author = $_POST["author"];
+      $subject = $_POST["subject"]; 
+      $content = $_POST["content"]; 
+      $current_time = date("Y-m-d H:i:s");
+
+      // 建立資料連接
+      $link = create_connection();
+                
+      // 執行 SQL 查詢
+      $sql = "INSERT INTO message(author, subject, content, date)
+              VALUES ('$author', '$subject', '$content', '$current_time')";
+      $result = execute_sql($link, "news", $sql);
+
+      // 關閉資料連接
+      mysqli_close($link);
+
+      // 設定標記為 true，代表剛剛有成功寫入資料
+      $show_success = true;
+  }
+?>
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>味遊台南 - 發表評論</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+<style type="text/css">
+	:root {
+		--bg-color: #fbf9f5;
+		--primary-color: #a94442;
+		--secondary-color: #c89d55;
+		--text-dark: #332c25;
+		--text-light: #766e65;
+	}
+	body
+	{ 
+		margin: 0; 
+		padding: 0; 
+		background-color: var(--bg-color); 
+		display: flex; 
+		flex-direction: column; 
+		min-height: 100vh; 
+		font-family: "Georgia", "Noto Serif TC", "PingFang TC", serif; /* 同步為古典優雅字體 */
+	}
+	.aaa { 
+		background-color: #DAC7A2; 
+		padding: 0.8rem 2rem; 
+		display: flex; 
+		justify-content: space-between; 
+		align-items: center; width: 100%; 
+		box-sizing: border-box; }
+	.logo-box { 
+		display: flex; 
+		align-items: center; 
+		gap: 12px; }
+	.logo-img { 
+		height: 55px;
+		width: auto; }
+	.logo-text { 
+		font-family: 'Noto Serif TC', Cambria, "Times New Roman", serif; 
+		font-size: 22pt; 
+		font-weight: bold; 
+		color: #3A2E2B; 
+		letter-spacing: 2px; 
+		text-shadow: 1px 1px 0px #fff, 2px 2px 0px #D4A373; }
+	.nav-links { 
+		display: flex; 
+		align-items: center; 
+		gap: 25px; }
+	.bbb { 
+		text-decoration: none;
+		color: #4A3E3D;
+		font-family: 'Noto Serif TC', "PingFang TC", "Microsoft JhengHei", serif;
+		font-size: 12pt; 
+		font-weight: 600; 
+		letter-spacing: 1.5px; 
+		border-bottom: 2px solid transparent;
+		padding-bottom: 6px; }
+	.bbb:hover, 
+	.bbb.current { 
+		color: #A94442; 
+		border-bottom: 2px solid #A94442; }
+	.fff.red-btn { 
+		background-color: var(--accent-red, #A64438);
+		font-size: 11pt;
+		color: #ffffff !important;
+		padding: 8px 20px;
+		border-radius: 30px; 
+		font-weight: bold;
+		text-decoration: none; }
+	
+	/* 表單與成功區塊樣式 */
+	.main-content { 
+		flex: 1;
+		display: flex;
+		justify-content: center; 
+		align-items: center; 
+		padding: 60px 20px; }
+	.comment-card { 
+		background: #fff; 
+		padding: 40px;
+		border-radius: 8px; width: 100%; 
+		max-width: 500px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+		border-top: 4px solid var(--secondary-color); 
+	}
+	.form-group { 
+		margin-bottom: 20px; 
+	}
+	.form-group label {
+		display: block; 
+		margin-bottom: 8px; 
+		color: var(--text-dark); 
+		font-weight: bold; }
+	.form-control { width: 100%; padding: 10px; 
+		border: 1px solid #ddd;
+		border-radius: 4px; 
+		box-sizing: border-box; }
+	.submit-btn { 
+		background: var(--primary-color); 
+		color: #fff;
+		border: none;
+		padding: 12px 20px; 
+		border-radius: 25px;
+		width: 100%; 
+		font-size: 12pt; 
+		font-weight: bold;
+		cursor: pointer; }
+	.success-box { 
+		text-align: center; 
+		color: var(--primary-color);
+	}
+	
+	/* --- 頁尾優化 (已成功同步字體風格) --- */
+	.site-footer {
+		background-color: #2A362D; /* 深墨綠色結尾 */
+		color: #E6E1D6;            
+		width: 100%;
+		margin-top: auto;          
+		font-family: "Georgia", "Noto Serif TC", "PingFang TC", serif; /* 同步襯線英文字體與整體字型 */
+	}
+	.footer-content {
+		max-width: 1200px;         
+		margin: 0 auto;            
+		padding: 25px 20px;        
+		text-align: center;        
+		font-size: 11pt;           
+		line-height: 1.6;
+	}
+
+</style>
+</head>
+
+<body>
+
+	<header class="aaa">
+		<div class="logo-box">
+			<img src="Home Logo.png" alt="LOGO" class="logo-img">
+			<span class="logo-text">味遊台南</span>
+		</div>
+		<nav class="nav-links">
+			<a href="home.html" class="bbb">首頁</a>
+			<a href="Home3.html" class="bbb">新聞</a>
+			<a href="show_post.html" class="bbb">評論區</a>
+		    <a href="Home4.html" class="bbb">聯絡我們</a>
+			<a href="home2.html" class="bbb">關於我們</a>
+			<a href="post.html" class="fff red-btn">評論</a>
+		</nav>
+	</header>
+
+	<main class="main-content">
+		<div class="comment-card">
+			<?php if ($show_success): ?>
+				<div class="success-box">
+					<div style="font-size: 3rem; margin-bottom: 15px;">💌</div>
+					<h2>評論發表成功！</h2>
+					<p style="color: #766e65; margin: 15px 0 25px 0;">感謝您的分享，您的足跡讓台南更有人情味。</p>
+					<a href="show_post.html" class="fff red-btn" style="display:inline-block;">查看最新評論</a>
+				</div>
+			<?php else: ?>
+				<form action="" method="post">
+					<h2 style="color: var(--primary-color); margin-top:0; margin-bottom:25px; text-align:center;">發表您的評論</h2>
+					<div class="form-group">
+					  <label>名字 / 暱稱</label>
+						<input type="text" name="author" class="form-control" required placeholder="例如：台南小老饕">
+				  </div>
+					<div class="form-group">
+						<label>評論主題</label>
+						<input type="text" name="subject" class="form-control" required placeholder="例如：這家牛肉湯無敵！">
+					</div>
+					<div class="form-group">
+						<label>內容細節</label>
+						<textarea name="content" class="form-control" rows="5" required placeholder="分享您的美食體驗..."></textarea>
+					</div>
+					<button type="submit" class="submit-btn">送出評論</button>
+		  </form>
+			<?php endif; ?>
+		</div>
+	</main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>© 2026 味遊台南 版權所有 | 聯絡我們：service@stust.edu.tw <br>
+            作者：4B3F0001 王凱均　4B3F0056 張馨</p>
+        </div>
+    </footer>
+
+</body>
+</html>

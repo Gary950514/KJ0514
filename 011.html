@@ -1,0 +1,311 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>味遊台南 - 國華街美食</title>
+    <!-- 補上全站字體引用連結 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+<style type="text/css">
+    /* ==========================================
+       【全域樣式：純色低飽和溫潤背景】
+       ========================================== */
+    body {
+        background-color: #F4F1EA; /* 溫潤米色基底，柔和不刺眼 */
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        font-family: "Georgia", "Noto Serif TC", "PingFang TC", "Microsoft JhengHei", serif; /* 整合全站主字體 */
+    }
+
+    /* 主體內容容器：沉穩質感的白幅區塊 */
+    .main-wrapper {
+        max-width: 1100px;
+        width: 90%;
+        margin: 40px auto;
+        background-color: #FFFFFF; /* 純白區塊，讓歷史色系與照片更突出 */
+        box-shadow: 0 10px 30px rgba(92, 75, 65, 0.05); /* 帶有微弱棕色調的柔和陰影 */
+        border-radius: 8px;
+        padding: 60px 40px;
+        box-sizing: border-box;
+    }
+
+    /* ==========================================
+       【導覽列】低飽和溫潤配色（與上一頁一模一樣）
+       ========================================== */
+	.aaa {
+		background-color: #DAC7A2;
+		padding: 0.8rem 2rem;
+		display: flex !important;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0;
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 25px;                      /* 自動生成 25px 完美按鈕間距，拋棄 nbsp */
+    }
+
+	/* --- 導覽列按鈕字體優化 --- */
+	.bbb {
+		text-decoration: none;
+		color: #4A3E3D;              /* 改為優雅的深焙咖啡色，與 LOGO 字體呼應，辨識度更高 */
+		padding-bottom: 6px; 
+		font-family: 'Noto Serif TC', "PingFang TC", "Microsoft JhengHei", serif; /* 優先使用襯線體，帶有文青感 */
+		font-size: 12pt;             /* 微調字體大小，看起來更精緻 */
+		font-weight: 600;            /* 半粗體，讓字體清晰 */
+		letter-spacing: 1.5px;       /* 稍微拉開字距，營造現代呼吸感 */
+		transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); /* 讓滑鼠懸停動畫更柔順 */
+		border-bottom: 2px solid transparent;
+	}
+
+	/* 滑鼠移上去的狀態 */
+	.bbb:hover {
+		color: #A94442;              /* 懸停時變成你設定的「安平磚紅」變數顏色 */
+		border-bottom: 2px solid #A94442; 
+	}
+
+	/* 目前所在頁面的狀態（例如：關於我們） */
+	.bbb.current {
+		color: #A94442;              /* 啟用狀態同樣使用安平磚紅 */
+		border-bottom: 2px solid #A94442; /* 下底線與文字同色 */
+		font-weight: bold;
+	}
+    .bbb:active {
+        border-bottom: 2px solid #75332B; 
+        color: #75332B;
+    }
+
+    /* 評論膠囊按鈕 */
+    .fff.red-btn {
+        background-color: #9E4A3F; /* 古典磚紅 */
+        font-size: 11pt;
+        color: #ffffff !important;     
+        padding: 8px 22px;          
+        border-radius: 30px;            
+        font-weight: bold;           
+        text-decoration: none;       
+        display: inline-block;       
+        box-shadow: 0 4px 10px rgba(158, 74, 63, 0.15);
+        transition: all 0.2s ease;
+    }
+
+    .fff.red-btn:hover {
+        background-color: #75332B; /* 懸停變深磚紅 */
+        transform: translateY(-1px);
+    }
+
+    /* ==========================================
+       【內文與圖片樣式：完美套用歷史沉穩感】
+       ========================================== */
+    .container {
+        color: #2A362D; /* 深墨綠色，展現古磚苔痕的歷史感 */
+        width: 100%;
+        margin: 0 auto 40px auto;           
+        box-sizing: border-box;
+        font-size: 22pt;
+        font-weight: bold;
+        text-align: center;
+        line-height: 1.5;
+    }
+
+    .center-img {
+        display: block;    
+        margin: 35px auto; 
+        max-width: 100%;   
+        height: auto;      
+        border-radius: 4px;
+    }
+
+    .text {
+        width: 100%;
+        margin: 25px auto;        
+        padding: 0 40px; 
+        box-sizing: border-box;
+        font-size: 13pt;
+        line-height: 1.8; /* 舒適的行高 */
+        text-align: left;       
+        display: block;
+        color: #4A4A4A; /* 深灰內文 */
+    }
+
+    /* 特色標題區塊 */
+	.text-bg {
+        color: #2A362D;           /* 深墨綠字 */
+        background-color: #E2DDD5; /* 低飽和溫潤米灰 */
+        padding: 15px 25px;
+        border-radius: 4px;        
+        font-size: 16pt;
+        display: block;            
+        text-align: left;          /* 文字靠左對齊 */
+        font-weight: bold;
+        border-left: 12px solid #9E4A3F; /* 左邊粗邊框（古典磚紅） */
+        height: auto;      
+        width: 100%;
+        max-width: 1000px;          
+        margin: 40px auto 20px auto; /* 區塊置中 */
+        box-sizing: border-box;
+    }
+
+	.text2{
+		color: #2A362D;           /* 深墨綠字 */
+		padding: 15px 25px;
+		border-radius: 4px;
+		font-size: 16pt;
+		display: block;
+		text-align: left;          
+		font-weight: bold;
+		border-left: 12px solid #C5896F; /* 左邊粗邊框 */
+		height: auto;
+		width: 100%;
+		max-width: 1000px;          
+		margin: 40px auto 20px auto; 
+		box-sizing: border-box;
+		background-color: #F4EBE1;
+    }
+	
+	.text3{
+        color: #2A362D;             /* 深墨綠字 */
+        font-size: 16pt;            
+        font-weight: bold;
+        text-align: left;           
+        border-left: 8px solid #E3519E ; /* 左側裝飾線 */
+        padding-left: 15px;         
+        margin: 45px auto 20px auto;
+        width: 100%;
+        max-width: 970px;           
+        box-sizing: border-box;
+        line-height: 1.4;
+    }
+
+	.logo-box {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+
+	.logo-img {
+		height: 55px;              
+		width: auto;               
+		max-height: 100%;          
+	}
+
+	.logo-text {
+		font-family: 'Noto Serif TC', Cambria, "Times New Roman", serif; 
+		font-size: 22pt;       
+		font-weight: 700;      
+		color: #3A2E2B;        
+		letter-spacing: 4px;   
+		text-shadow: 1px 1px 0px #fff, 2px 2px 0px #D4A373; 
+	}
+
+	/* --- 頁尾優化 (已成功同步字體風格) --- */
+	.site-footer {
+		background-color: #2A362D; /* 深墨綠色結尾 */
+		color: #E6E1D6;            
+		width: 100%;
+		margin-top: auto;          
+		font-family: "Georgia", "Noto Serif TC", "PingFang TC", serif; /* 同步襯線字型組合 */
+	}
+
+	.footer-content {
+		max-width: 1200px;         
+		margin: 0 auto;            
+		padding: 25px 20px;        
+		text-align: center;        
+		font-size: 11pt;           
+		line-height: 1.6;
+	}
+
+</style>
+</head>
+
+<body>
+    
+	<header class="aaa">
+		<div class="logo-box">
+			<img src="Home Logo.png" alt="LOGO" class="logo-img">
+			<span class="logo-text">味遊台南</span>
+		</div>
+		<nav class="nav-links">
+			<a href="index.html" class="bbb">首頁</a>
+			<a href="Home3.html" class="bbb">新聞</a>
+			<a href="show_post.html" class="bbb">評論區</a>
+		    <a href="Home4.html" class="bbb">聯絡我們</a>
+			<a href="home2.html" class="bbb">關於我們</a>
+			<a href="post.html" class="fff red-btn">評論</a>
+		</nav>
+	</header>
+
+	<!-- 主體白色襯底包覆區塊 -->
+	<div class="main-wrapper">
+		<p class="container">2026台南國華街必吃美食有哪些？20間在地人也愛的必吃口袋名單</p>
+		<img class="center-img" src="011/01.jpg" width="1000" height="1200" alt="國華街美食1" />
+	  <p class="text">來到台南要到哪裡吃美食？當然就是國華街！對於台南人來說，這些沒有花俏招牌的街頭小攤販就是生活中不可或缺的一部分，比起正襟危坐的高級餐廳，來到台南邊走邊吃更能貼近當地生活，今天就為大家整理出台南小吃最大集散地「國華街」必吃美食20選，下次來台南玩時記得不要錯過了呦！</p>
+
+		
+	  <p class="text-bg">必吃美食1：富盛號碗粿
+</p>
+		<p class="text">來到國華街首先第一家就是不能錯過「富盛號碗粿」！這間70多年的老店不但是國華街的超人氣美食，更是許多來到台南的外地遊客必訪名店，店內只賣兩種餐點：碗粿跟魚羹，每樣只要台幣40元。使用台灣在來米製作而成的Q彈美味碗粿中，藏著野生火燒蝦仁、溫體瘦肉塊、肉燥、蛋黃與香菇，淋上鹹中帶甜的獨家勾芡醬汁，就是簡單幸福的台南好滋味。每天一大清早就人滿為患的店內，可以放寬心地與在地人併桌吃早餐，一口碗粿一口魚羹，看似簡單的街邊小食也能讓你吃到碗底朝天念念不忘！</p>
+				<img class="center-img" src="011/02.jpg" width="1000" height="1200" alt="國華街美食1" />
+
+		<p class="text3">富盛號碗粿<br>
+		地址：台南市中西區民族路3段11號<br>
+		臉書：https://www.facebook.com/profile.php?id=100063663049545<br>
+		電話：06-2274101<br>
+		時間：07:00～17:00／宅配每天13點前打電話訂購<br>
+		公休：週四</p>
+		
+		<p class="text-bg">必吃美食2：一味品碗粿
+</p>
+
+		<p class="text">台南人再熟悉不過的街邊氛圍卻成為了三年入選必比登的人氣美食，其實「一味品碗粿」與「富盛號碗粿」師出同門，雖然口味大同小異但兩家的經營策略天南地北，「富盛號碗粿」由年輕第三代經營走文青質感氛圍，而「一味品碗粿」則是主打隨興而坐古早味，雖然兩家店隔著國華街相對面，卻各有各的支持者，形成一種良好的循環，這種不惡意競爭的人情味也讓這碗一品味碗粿連續三年入選米其林必比登推薦，全世界老饕都慕名而來！
+
+</p>				
+		<img class="center-img" src="011/03.jpg" width="1000" height="1200" alt="國華街美食1" />
+				<p class="text3">一味品碗粿<br>
+地址：台南事中西區國華街三段177號<br>
+臉書：https://www.facebook.com/onegoodpin/<br>
+電話：06-2288563<br>
+時間：05:30～17:00／售完提早結束營業<br>
+公休：週二</p>
+		
+		
+			  <p class="text-bg">必吃美食3：金得春捲</p>
+		<p class="text">創業超過70年的「金得春捲」，點餐後工作人員熟練地將蝦子、滷豬肉、蛋皮、皇帝豆、高麗菜、滷豆乾依序堆疊在春捲皮上，紅的、綠的、黃的五顏六色引人垂涎三尺，最後撒上靈魂主角花生糖粉與蒜泥香菜，一卷滿滿餡料吃起來超有飽足感的圓胖春捲就完成囉！由於春捲備料繁複，近年來越來越多人以購買替代自己料理，也讓「金得春捲」迅速累積名聲，更成為外地遊客來到台南旅行時必吃美食！</p>
+				<img class="center-img" src="011/04.jpg" width="1000" height="1200" alt="國華街美食1" />
+
+		<p class="text3">金得春捲<br>
+地址：台南市民族路三段19號<br>
+官網：https://www.kintoku.com/<br>
+電話：06-2285397<br>
+時間：07:00~17:00<br>
+公休：週二</p>
+		
+					  <p class="text-bg">必吃美食4：阿松割包
+</p>
+		<p class="text">雖然割包是相當道地的台灣小吃，但來到台南就是要有自己的風味，比起夾油亮五花肉的傳統割包，這家位於永樂市場邊的阿松割包，光口味就有包豬皮的「普通包」、包瘦肉的「瘦肉包」以及包豬舌的「豬舌包」三種，入味卻不乾柴的豬肉與清爽的酸菜相互提襯，尤其是豬舌包一開始真的匪夷所思，但一口吃下，完全可以理解「豬舌×酸菜×花生醬」的美味組合，有嚼勁的肉片，甜鹹調味中帶點香氣，台南式的甜味花生醬厚厚一層，酸菜的清脆則完美平衡了口感，這一口不只吃飽，還包含了台南人對傳統美食的獨到手藝！</p>
+				<img class="center-img" src="011/05.jpg" width="1000" height="1200" alt="國華街美食1" />
+
+		<p class="text3">阿松割包<br>
+地址：台南市中西區國華街三段181號<br>
+臉書：https://www.facebook.com/p/%E9%98%BF%E6%9D%BE%E5%89%B2%E5%8C%85-100069363354124/<br>
+電話：06-2110453<br>
+時間：07:30~17:00／售完提早結束營業<br>
+公休：不定休，請上臉書確認</p>
+
+
+	</div>
+    
+	<footer class="site-footer">
+		<div class="footer-content">
+			<p>© 2026 味遊台南 版權所有 | 聯絡我們：service@stust.edu.tw <br>
+			作者：4B3F0001 王凱均　4B3F0056 張馨</p>
+		</div>
+	</footer>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>無標題文件</title>
+<style type="text/css">
+
+	
+	
+	.center-img {
+    display: block;    /* 關鍵：把圖片從行內元素改成區塊元素 */
+    margin: 20px auto; /* 關鍵：上下留 20px 距離，左右 auto 就會自動置中 */
+    
+    max-width: 100%;   /* 額外好習慣：確保圖片太大時，會自動縮小配合螢幕，不會爆出去 */
+    height: auto;      /* 讓圖片維持正確的比例不變形 */
+		
+
+}
+	
+	/* 限制全頁寬度的容器 */
+        .container {
+    width: 100%;
+    max-width: 1200px;        /* 限制最大寬度 */
+    margin: 0 auto;           /* 讓畫面置中 */
+    padding: 0 20px;          /* 左右留安全邊距 */
+    box-sizing: border-box;
+    font-size: 27pt;
+    font-weight: bold;
+        }
+.aaa {
+    color: #000000;
+    text-align: left;
+    font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+    font-style: normal;
+    font-size: 27pt;
+    font-weight: bold;
+}
+/* 基礎樣式：先把超連結預設的底線拿掉，並設定顏色 */
+  .bbb {
+    text-decoration: none;
+    color: #333;
+    padding-bottom: 5px; /* 留一點空間給底線，畫面比較不擁擠 */
+	      font-size: 15pt;
+    transition: all 0.3s ease; /* 讓底線出現時有平滑的過渡動畫 */
+  }
+
+  /* 當滑鼠游標「懸停」在首頁或關於我們時 */
+  .bbb:hover {
+    color: red; /* 文字也可以順便變紅色，不想要的話可以刪掉這行 */
+  }
+
+  /* 當滑鼠「按下去」的那一刻（Active 狀態）呈現紅色底線 */
+  .bbb:active {
+    border-bottom: 2px solid red; 
+    color: red;
+	  }
+	.bbb.current {
+    border-bottom: 3px solid red; /* 紅色底線，厚度 3px */
+    color: #000000;                   /* 文字也一起變紅（可自由刪除） */
+    font-weight: bold;            /* 文字加粗（可自由刪除） */
+}
+.text {
+	width: 100%;
+    max-width: 1200px;        /* 限制最大寬度 */
+    margin: 0 auto;           /* 讓畫面置中 */
+    padding: 0 110px;          /* 左右留安全邊距 */
+    box-sizing: border-box;
+	font-size: 14pt;
+
+    text-align: center;
+	display: block;
+    width: 100%;       /* 關鍵：讓圖片寬度永遠填滿外面的容器 (100%) */
+    max-width: 100%;   /* 確保不會超出容器 */
+    height: auto;      /* 高度自動依比例縮放，圖片才不會扁掉變形 */
+    margin: 20px 0;    /* 上下留 20px 距離，左右改成 0（因為已經填滿了，不需要 auto 置中） */
+}
+	.ggg
+	{
+    display: block;    /* 關鍵：把圖片從行內元素改成區塊元素 */
+    margin: 20px auto; /* 關鍵：上下留 20px 距離，左右 auto 就會自動置中 */
+    
+    max-width: 100%;   /* 額外好習慣：確保圖片太大時，會自動縮小配合螢幕，不會爆出去 */
+    height: auto;      /* 讓圖片維持正確的比例不變形 */
+		display: block;
+    width: 100%;       /* 關鍵：讓圖片寬度永遠填滿外面的容器 (100%) */
+    max-width: 100%;   /* 確保不會超出容器 */
+    height: auto;      /* 高度自動依比例縮放，圖片才不會扁掉變形 */
+    margin: 20px 0;    /* 上下留 20px 距離，左右改成 0（因為已經填滿了，不需要 auto 置中） */
+		
+
+}
+	.text-bg {
+    background-color: #B1B1B1; /* 這裡設定背景顏色（黃色），可換成你喜歡的顏色 */
+    max-height: 1000px;
+    padding: 10px 8px;/* 上下留 4px，左右留 8px 的空間，背景才不會太擠 */
+    border-radius: 4px;        /* 讓背景四個角帶有一點圓角（可選） */
+    display: inline-block;     /* 讓背景範圍剛好包住文字就好 */
+    width: 40%;        /* 置中的區塊一定要有寬度（可以是 px 或 %） */
+    font-size: 20pt;
+    display: block;            /* 1. 從 inline-block 改成 block (區塊) */
+    margin: 20px auto;         /* 3. 關鍵：上下留 10px 距離，左右 auto 就會自動置中 */
+    text-align: left;        /* 4. 確保多行文字時，文字本身也會在裡面置中 */
+    font-weight: bold;
+    border-left: 12px solid #b95d96; /* 12px是線的粗度，solid是實線，後面是粉紫色色碼 */
+    height: auto;      /* 讓圖片維持正確的比例不變形 */
+    width: 100%;
+    max-width: 970px;        /* 限制最大寬度 */
+    margin: 20px auto;           /* 讓畫面置中 */
+		
+	
+		
+}
+    /* 頁尾的最外層：負責底色與填滿全螢幕寬度 */
+.site-footer {
+    background-color: #333333; /* 暗灰色背景，頁尾常用的高質感顏色 */
+    color: #ffffff;            /* 文字改成白色 */
+    width: 100%;
+    margin-top: 50px;          /* 與上方內容保持 50px 的舒適距離 */
+}
+
+/* 頁尾的內層：負責限制文字寬度與置中 */
+.footer-content {
+    max-width: 1200px;         /* 寬度設定跟你的 .container 一樣 */
+    margin: 0 auto;            /* 左右置中 */
+    padding: 30px 20px;        /* 上下留 30px 撐開高度，左右留 20px 安全邊距 */
+    text-align: center;        /* 讓裡面的版權文字置中 */
+    font-size: 14px;           /* 頁尾文字通常比主文字小一點 */
+}
+	
+</style>
+</head>
+
+<body>
+<p class=aaa>　味遊台南　&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  <a href="123.html" class="bbb current">首頁</a>　<a href="456.html" class=bbb>關於我們</a></p>
+
+	
+
+</body>
+	
+	<img class=ggg src="home.png" width="1920" height="1080" alt=""/>
+	<p class=container>台南旅遊景點推薦｜【神農街】超夯文創老街！到訪台南旅遊不可錯過的必逛景點，值得細細品味的特色文創，每個小店都藏著滿滿的驚喜！</p>
+	<img class=center-img src="01.jpg" width="1000" height="1200" alt="" />
+	
+<p class=text>今天要帶大家走訪的是台南保留老宅風格的「神農老街」<br>
+
+
+到了台南除了品嚐小吃美食，不可錯過的還有熱門的文青打卡景點，以及超夯的文創老街<br>
+
+
+像是充斥濃厚懷舊復古氛圍的「神農街」，也是到訪台南旅遊不可錯過的必逛景點<br>
+
+
+結合了古蹟歷史的建築和在地傳統文化，古都特色鮮明，吃喝玩樂選擇多元，還充滿著台南人獨有的濃厚人情味<br>
+
+
+每個小店都能發掘特色文創，有些是傳承下來的工藝技術，也有些是新舊文化激盪出的創意結合<br>
+
+
+每個角落都值得路過的旅人放慢腳步，細細品味，感受台南特有的風格特色，一起來場文青旅行吧</p>
+<br>
+<br>
+<br>
+
+	
+	<p  class=text-bg>❝ 老街古宅融合特色文創—神農街 ❞</p><br>
+
+		<img class=center-img src="02.jpg" width="1000" height="1200" alt="" />
+	<p class=text>
+		古色古香的老宅街道裡，有住家、文創小店、民宿...等，保留了傳統歷史與創新的結合<br>
+		復古懷舊與現代的交錯感，別有一番風味，更是近幾年超夯的必逛文創聖地<br>
+		許多文創小店都自有不同的特色，很值得放下腳步，慢慢悠晃，去享受這樣獨特的氛圍</p>
+	<img class=center-img src="03.jpg" width="1000" height="1200" alt="" />
+	<img class=center-img src="04.jpg" width="1000" height="1200" alt="" />	
+	<p class=text>「神農文創市集」內展售了各式文創小物，很值得來挖寶<br>
+
+雖然市集佔地不大，卻很溫暖，每個攤位的老闆都很親切，能感受到台南人的熱情與濃厚的人情味<br>
+
+就算只是短暫的佇足閒晃，也讓人倍感放鬆，很舒服的氛圍感～～～</p>
+	<img class=center-img src="05.jpg" width="1000" height="1200" alt="" />	
+	<p class=text>市集走到底，還能欣賞懷舊感的文創古物，各式擺件看起來都充滿濃厚的懷舊氛圍</p>
+	<img class=center-img src="06.jpg" width="1000" height="1200" alt="" />	
+	<img class=center-img src="07.jpg" width="1000" height="1200" alt="" />	
+	<img class=center-img src="08.jpg" width="1000" height="1200" alt="" />	
+	<p class=text>每間小店都各有特色，同時也帶出了新的氣息，讓老宅街道有了新的年輕的生命力<br>
+
+新舊並存激盪出的特色，也是台南最美最具文化特色的風景，讓人忍不住想多看多感受這迷人的魅力</p>
+	<img class=center-img src="09.jpg" width="1000" height="1200" alt="" />	
+	<img class=center-img src="10.jpg" width="1000" height="1200" alt="" />	
+	<img class=center-img src="11.jpg" width="1000" height="1200" alt="" />	
+<p class=text>夜晚神農街更會擺脫白天的文青氣息，搖身變成不夜城，小巷內滿滿都是特色酒吧<br>
+到訪台南旅遊不可錯過的必逛景點，每次到訪光臨都能有不一樣的感受與驚喜，絕對滿足相機也滿足心靈的享受<br>
+藏著滿滿的驚喜！很值得細細品味的特色文創與文化激盪</p>
+	
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>© 2026 味遊台南 版權所有 | 聯絡我們：service@stust.edu.tw <br>
+						4B3F0001</p>
+        </div>
+    </footer>
+</html>

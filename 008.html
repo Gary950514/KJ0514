@@ -1,0 +1,280 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>味遊台南 - 國華街美食</title>
+    <!-- 補上全站字體引用連結 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+<style type="text/css">
+    /* ==========================================
+       【全域樣式：純色低飽和溫潤背景】
+       ========================================== */
+    body {
+        background-color: #F4F1EA; /* 溫潤米色基底，柔和不刺眼 */
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        font-family: "Georgia", "Noto Serif TC", "PingFang TC", "Microsoft JhengHei", serif; /* 整合全站主字體 */
+    }
+
+    /* 主體內容容器：沉穩質感的白幅區塊 */
+    .main-wrapper {
+        max-width: 1100px;
+        width: 90%;
+        margin: 40px auto;
+        background-color: #FFFFFF; /* 純白區塊，讓歷史色系與照片更突出 */
+        box-shadow: 0 10px 30px rgba(92, 75, 65, 0.05); /* 帶有微弱棕色調的柔和陰影 */
+        border-radius: 8px;
+        padding: 60px 40px;
+        box-sizing: border-box;
+    }
+
+    /* ==========================================
+       【導覽列】低飽和溫潤配色（與上一頁一模一樣）
+       ========================================== */
+	.aaa {
+		background-color: #DAC7A2;
+		padding: 0.8rem 2rem;
+		display: flex !important;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0;
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 25px;                      /* 自動生成 25px 完美按鈕間距，拋棄 nbsp */
+    }
+
+	/* --- 導覽列按鈕字體優化 --- */
+	.bbb {
+		text-decoration: none;
+		color: #4A3E3D;              /* 改為優雅的深焙咖啡色，與 LOGO 字體呼應，辨識度更高 */
+		padding-bottom: 6px; 
+		font-family: 'Noto Serif TC', "PingFang TC", "Microsoft JhengHei", serif; /* 優先使用襯線體，帶有文青感 */
+		font-size: 12pt;             /* 微調字體大小，看起來更精緻 */
+		font-weight: 600;            /* 半粗體，讓字體清晰 */
+		letter-spacing: 1.5px;       /* 稍微拉開字距，營造現代呼吸感 */
+		transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); /* 讓滑鼠懸停動畫更柔順 */
+		border-bottom: 2px solid transparent;
+	}
+
+	/* 滑鼠移上去的狀態 */
+	.bbb:hover {
+		color: #A94442;              /* 懸停時變成你設定的「安平磚紅」變數顏色 */
+		border-bottom: 2px solid #A94442; 
+	}
+
+	/* 目前所在頁面的狀態（例如：關於我們） */
+	.bbb.current {
+		color: #A94442;              /* 啟用狀態同樣使用安平磚紅 */
+		border-bottom: 2px solid #A94442; /* 下底線與文字同色 */
+		font-weight: bold;
+	}
+    .bbb:active {
+        border-bottom: 2px solid #75332B; 
+        color: #75332B;
+    }
+
+    /* 評論膠囊按鈕 */
+    .fff.red-btn {
+        background-color: #9E4A3F; /* 古典磚紅 */
+        font-size: 11pt;
+        color: #ffffff !important;     
+        padding: 8px 22px;          
+        border-radius: 30px;            
+        font-weight: bold;           
+        text-decoration: none;       
+        display: inline-block;       
+        box-shadow: 0 4px 10px rgba(158, 74, 63, 0.15);
+        transition: all 0.2s ease;
+    }
+
+    .fff.red-btn:hover {
+        background-color: #75332B; /* 懸停變深磚紅 */
+        transform: translateY(-1px);
+    }
+
+    /* ==========================================
+       【內文與圖片樣式：完美套用歷史沉穩感】
+       ========================================== */
+    .container {
+        color: #2A362D; /* 深墨綠色，展現古磚苔痕的歷史感 */
+        width: 100%;
+        margin: 0 auto 40px auto;           
+        box-sizing: border-box;
+        font-size: 22pt;
+        font-weight: bold;
+        text-align: center;
+        line-height: 1.5;
+    }
+
+    .center-img {
+        display: block;    
+        margin: 35px auto; 
+        max-width: 100%;   
+        height: auto;      
+        border-radius: 4px;
+    }
+
+    .text {
+        width: 100%;
+        margin: 25px auto;        
+        padding: 0 40px; 
+        box-sizing: border-box;
+        font-size: 13pt;
+        line-height: 1.8; /* 舒適的行高 */
+        text-align: left;       
+        display: block;
+        color: #4A4A4A; /* 深灰內文 */
+    }
+
+    /* 特色標題區塊 */
+	.text-bg {
+        color: #2A362D;           /* 深墨綠字 */
+        background-color: #E2DDD5; /* 低飽和溫潤米灰 */
+        padding: 15px 25px;
+        border-radius: 4px;        
+        font-size: 16pt;
+        display: block;            
+        text-align: left;          /* 文字靠左對齊 */
+        font-weight: bold;
+        border-left: 12px solid #9E4A3F; /* 左邊粗邊框（古典磚紅） */
+        height: auto;      
+        width: 100%;
+        max-width: 1000px;          
+        margin: 40px auto 20px auto; /* 區塊置中 */
+        box-sizing: border-box;
+    }
+
+	.text2{
+		color: #2A362D;           /* 深墨綠字 */
+		padding: 15px 25px;
+		border-radius: 4px;
+		font-size: 16pt;
+		display: block;
+		text-align: left;          
+		font-weight: bold;
+		border-left: 12px solid #C5896F; /* 左邊粗邊框 */
+		height: auto;
+		width: 100%;
+		max-width: 1000px;          
+		margin: 40px auto 20px auto; 
+		box-sizing: border-box;
+		background-color: #F4EBE1;
+    }
+	
+	.text3{
+        color: #2A362D;             /* 深墨綠字 */
+        font-size: 16pt;            
+        font-weight: bold;
+        text-align: left;           
+        border-left: 8px solid #E3519E ; /* 左側裝飾線 */
+        padding-left: 15px;         
+        margin: 45px auto 20px auto;
+        width: 100%;
+        max-width: 970px;           
+        box-sizing: border-box;
+        line-height: 1.4;
+    }
+
+	.logo-box {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+
+	.logo-img {
+		height: 55px;              
+		width: auto;               
+		max-height: 100%;          
+	}
+
+	.logo-text {
+		font-family: 'Noto Serif TC', Cambria, "Times New Roman", serif; 
+		font-size: 22pt;       
+		font-weight: 700;      
+		color: #3A2E2B;        
+		letter-spacing: 4px;   
+		text-shadow: 1px 1px 0px #fff, 2px 2px 0px #D4A373; 
+	}
+
+	/* --- 頁尾優化 (已成功同步字體風格) --- */
+	.site-footer {
+		background-color: #2A362D; /* 深墨綠色結尾 */
+		color: #E6E1D6;            
+		width: 100%;
+		margin-top: auto;          
+		font-family: "Georgia", "Noto Serif TC", "PingFang TC", serif; /* 同步襯線字型組合 */
+	}
+
+	.footer-content {
+		max-width: 1200px;         
+		margin: 0 auto;            
+		padding: 25px 20px;        
+		text-align: center;        
+		font-size: 11pt;           
+		line-height: 1.6;
+	}
+
+</style>
+</head>
+
+<body>
+    
+	<header class="aaa">
+		<div class="logo-box">
+			<img src="Home Logo.png" alt="LOGO" class="logo-img">
+			<span class="logo-text">味遊台南</span>
+		</div>
+		<nav class="nav-links">
+			<a href="index.html" class="bbb">首頁</a>
+			<a href="Home3.html" class="bbb">新聞</a>
+			<a href="show_post.html" class="bbb">評論區</a>
+		    <a href="Home4.html" class="bbb">聯絡我們</a>
+			<a href="home2.html" class="bbb">關於我們</a>
+			<a href="post.html" class="fff red-btn">評論</a>
+		</nav>
+	</header>
+
+	<!-- 主體白色襯底包覆區塊 -->
+	<div class="main-wrapper">
+		<p class="container">安平古堡、奇美輸了！台南「1景點」3天吸1.6萬人成最強景點，網讚：夜景美炸、像穿越時空</p>
+		<img class="center-img" src="008/01.jpg" width="1000" height="1200" alt="國華街美食1" />
+				<p class="text">台南古蹟真的變潮了！今年春節赤崁樓魅力大爆發，短短 3 天就狂吸超過 1.6 萬人次造訪，成為府城最夯的走春景點。現在去赤崁樓不只能拍美照，還能參加超沉浸的「熱蘭遮市集」，換上古錢幣體驗荷蘭商人的日常，甚至有「清代知府」現身帶你夜間猜燈謎、講古蹟裡的傳奇故事。隨著耗時多年的修復工程正式完工，現在的赤崁樓不僅更有質感，連夜景都美到不行，本文為你整理赤崁樓必看亮點、整修完工現況與必買周邊懶人包，帶你一次看懂這座府城地標的全新玩法。</p>
+
+		
+	  <p class="text-bg">台南四大古蹟「赤崁樓、安平古堡、安平樹屋、億載金城」228 連假狂吸 3 萬人次！赤崁樓吸 1.6 萬觀光人次成府城走春最強景點</p>
+		<p class="text">根據台南市文化局的統計觀測，市內四大指標性古蹟——赤崁樓、安平古堡、安平樹屋及億載金城，在過去短短 3 天內便匯聚了將近 3 萬名遊客登門造訪。其中，赤崁樓展現了無與倫比的集客魅力，以 16000 餘人次的傲人成績獨佔鰲頭，貢獻了全體入園人數過半的比例，成功為丙午年的春節系列慶典畫下壯麗句點。</p><br>
+
+		
+		<p class="text">這場名為「熱蘭遮市集」的盛會，巧妙地將赤崁樓轉化為橫跨 17 至 19 世紀的大型實境舞台。現場不再只是靜態的建築展示，而是透過「普羅民遮迎元宵」活動主題，將昔日台江內海繁忙的貿易榮景搬進現實。民眾踏入古蹟時，宛如步入一場動態的歷史實境秀，能在精心營造的情境中，體驗跨越時空的感官震撼。</p><br>
+
+		
+		<p class="text-bg">不只拍照還能換錢！在赤崁樓體驗荷蘭商人的日常</p>
+
+		<p class="text">赤崁樓「熱蘭遮市集」的獨特之處在於其高度的沉浸感與參與性。穿梭於古牆紅磚間的，是扮演著西拉雅原住民、荷蘭商人、漢人與日籍人士等多元角色的專業表演者，他們隨機與民眾交談並提供合影，甚至引導遊客透過集章任務拼湊台灣早期的歷史輪廓。此外，市集更別出心裁地推出仿古貨幣進行交易，搭配特色美食，讓原本沉靜的古蹟空間充盈著熱鬧的叫賣聲與歡笑，使歷史場景顯得格外生動。<br>
+
+
+當夜幕垂降，「暗時臆謎猜」活動更將現場氛圍推向高潮。由演員精湛詮釋的清代知名知府蔣元樞，以極具臨場感的應對引領遊客破解燈謎。這些謎題並非憑空捏造，而是巧妙地將赤崁樓的建築細節，如瓶狀門上的蕉葉白兔或鯉魚吐藻的裝飾意涵化作線索，讓解謎過程成為一場細品古蹟之美的深度導覽。現場更透過說書講古的方式，重現了鴨母王朱一貴等傳奇人物在當地的征戰軼事，使歷史張力得以具象化。</p>
+		<p class="text-bg">不只是網美打卡點！文化局長黃雅玲談赤崁樓的「活化靈魂」</p>
+
+		<p class="text">這場創新的文化體驗在網路社群引發了廣泛迴響。青年作家謝宜安便在臉書上對此讚不絕口，認為這種由知府大人親自帶領的「穿越式猜謎」極具風雅，展現了官方在角色考據上的認真程度。對此，文化局長黃雅玲指出，這正是古蹟活化的核心目標——讓文化資產不再僅是觀光客拍照的佈景，而是透過角色互動與情境設計，讓歷史血肉化為大眾生活中可感知的記憶。 （相關報導： 內灣老街、六福村輸了！新竹最強景點吸386萬人，遊客讚美景不輸國外、設施多能玩整天 ｜ 更多文章 ）</p>
+
+		<p class="text-bg">從普羅民遮到文昌閣：台南赤崁樓的跨時空建築美學</p>	
+
+		<p class="text">如果說「熱蘭遮市集」是赤崁樓動人的一場幻夢，那麼其建築本身則是支撐夢境的現實骨幹。這座融合了荷式堡壘遺蹟與清領廟宇風格的文化地標，在白天的古意盎然與入夜後的燈光點綴下，展現出截然不同的魅力。無論是為了祈求魁星爺的庇佑，還是為了那份解鎖歷史課本地標的儀式感，赤崁樓依然是旅人心中不可取代的府城起點。</p>	
+	</div>
+    
+	<footer class="site-footer">
+		<div class="footer-content">
+			<p>© 2026 味遊台南 版權所有 | 聯絡我們：service@stust.edu.tw <br>
+			作者：4B3F0001 王凱均　4B3F0056 張馨</p>
+		</div>
+	</footer>
+</body>
+</html>

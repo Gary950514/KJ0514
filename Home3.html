@@ -1,0 +1,350 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>味遊台南 - 府城時光新聞</title>
+    <!-- 引入全站統一 Google 字體連結 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+<style type="text/css">
+    /* ==========================================
+       【全域樣式：純色低飽和溫潤背景】
+       ========================================== */
+    body {
+        background-color: #F4F1EA; /* 溫潤米色基底 */
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        font-family: "Georgia", "Noto Serif TC", "PingFang TC", "Microsoft JhengHei", serif; /* 整合全站主字體 */
+    }
+
+    /* 主體內容容器：沉穩質感的白幅區塊 */
+    .main-wrapper {
+        max-width: 1100px;
+        width: 90%;
+        margin: 40px auto;
+        background-color: #FFFFFF; /* 純白區塊，讓歷史色系與照片更突出 */
+        box-shadow: 0 10px 30px rgba(92, 75, 65, 0.05); /* 柔和陰影 */
+        border-radius: 8px;
+        padding: 60px 40px;
+        box-sizing: border-box;
+        flex: 1; /* 確保推開頁尾 */
+    }
+
+    /* ==========================================
+       【導覽列】低飽和溫潤配色（全站完全同步）
+       ========================================== */
+	.aaa {
+		background-color: #DAC7A2;
+		padding: 0.8rem 2rem;
+		display: flex !important;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0;
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+
+	.bbb {
+		text-decoration: none;
+		color: #4A3E3D;              
+		padding-bottom: 6px; 
+		font-family: 'Noto Serif TC', "PingFang TC", "Microsoft JhengHei", serif; 
+		font-size: 12pt;             
+		font-weight: 600;            
+		letter-spacing: 1.5px;       
+		transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); 
+		border-bottom: 2px solid transparent;
+	}
+
+	.bbb:hover {
+		color: #A94442;              
+		border-bottom: 2px solid #A94442; 
+	}
+
+	.bbb.current {
+		color: #A94442;              
+		border-bottom: 2px solid #A94442; 
+		font-weight: bold;
+	}
+
+    /* 評論膠囊按鈕 */
+    .fff.red-btn {
+        background-color: #9E4A3F; /* 古典磚紅 */
+        font-size: 11pt;
+        color: #ffffff !important;     
+        padding: 8px 22px;          
+        border-radius: 30px;            
+        font-weight: bold;           
+        text-decoration: none;       
+        display: inline-block;       
+        box-shadow: 0 4px 10px rgba(158, 74, 63, 0.15);
+        transition: all 0.2s ease;
+    }
+
+    .fff.red-btn:hover {
+        background-color: #75332B; 
+        transform: translateY(-1px);
+    }
+
+    /* ==========================================
+       【新聞頁面專屬樣式】
+       ========================================== */
+    .page-title {
+        color: #2A362D; /* 深墨綠色 */
+        font-size: 24pt;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+    }
+
+    .page-subtitle {
+        font-size: 11pt;
+        color: #8C7E74;
+        text-align: center;
+        margin-bottom: 40px;
+        letter-spacing: 1px;
+    }
+
+    /* 新增新聞卡片式列表 */
+    .news-list {
+        display: flex;
+        flex-direction: column;
+        gap: 35px;
+        max-width: 950px;
+        margin: 0 auto;
+    }
+
+    .news-item {
+        display: flex;
+        gap: 30px;
+        padding-bottom: 35px;
+        border-bottom: 1px dashed #E2DDD5;
+        align-items: center;
+    }
+
+    .news-item:last-child {
+        border-bottom: none; /* 最後一個不加虛線 */
+    }
+
+    .news-img-box {
+        width: 280px;
+        height: 180px;
+        flex-shrink: 0;
+        overflow: hidden;
+        border-radius: 6px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .news-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .news-item:hover .news-img {
+        transform: scale(1.05); /* 滑鼠懸停時照片微放大 */
+    }
+
+    .news-info {
+        flex-grow: 1;
+    }
+
+    .news-date {
+        font-size: 10.5pt;
+        color: #9E4A3F; /* 古典磚紅日期 */
+        font-weight: bold;
+        margin-bottom: 8px;
+        display: block;
+        letter-spacing: 1px;
+    }
+
+    .news-headline {
+        font-size: 16pt;
+        color: #2A362D;
+        font-weight: bold;
+        margin-bottom: 12px;
+        text-decoration: none;
+        display: block;
+        line-height: 1.4;
+        transition: color 0.2s ease;
+    }
+
+    .news-headline:hover {
+        color: #9E4A3F; /* 懸停時標題變磚紅 */
+    }
+
+    .news-summary {
+        font-size: 11pt;
+        color: #555555;
+        line-height: 1.7;
+        text-align: justify;
+    }
+
+    /* RWD 手機版自動適應排列 */
+    @media (max-width: 768px) {
+        .news-item {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .news-img-box {
+            width: 100%;
+            height: 200px;
+        }
+        .main-wrapper {
+            padding: 40px 20px;
+        }
+    }
+
+	.logo-box {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+
+	.logo-img {
+		height: 55px;              
+		width: auto;               
+	}
+
+	.logo-text {
+		font-family: 'Noto Serif TC', Cambria, "Times New Roman", serif; 
+		font-size: 22pt;       
+		font-weight: 700;      
+		color: #3A2E2B;        
+		letter-spacing: 4px;   
+		text-shadow: 1px 1px 0px #fff, 2px 2px 0px #D4A373; 
+	}
+
+	/* --- 頁尾優化 (與全站完全同步) --- */
+	.site-footer {
+		background-color: #2A362D; /* 深墨綠色結尾 */
+		color: #E6E1D6;            
+		width: 100%;
+		margin-top: auto;          
+		font-family: "Georgia", "Noto Serif TC", "PingFang TC", serif; 
+	}
+
+	.footer-content {
+		max-width: 1200px;         
+		margin: 0 auto;            
+		padding: 25px 20px;        
+		text-align: center;        
+		font-size: 11pt;           
+		line-height: 1.6;
+	}
+
+</style>
+</head>
+
+<body>
+    
+	<header class="aaa">
+		<div class="logo-box">
+			<img src="Home Logo.png" alt="LOGO" class="logo-img">
+			<span class="logo-text">味遊台南</span>
+		</div>
+		<nav class="nav-links">
+			<a href="home.html" class="bbb">首頁</a>
+			<a href="Home3.html" class="bbb current">新聞</a>
+			<a href="show_post.html" class="bbb">評論區</a>
+		    <a href="Home4.html" class="bbb">聯絡我們</a>
+			<a href="home2.html" class="bbb">關於我們</a>
+			<a href="post.html" class="fff red-btn">評論</a>
+		</nav>
+	</header>
+
+	<!-- 主體白色襯底包覆區塊 -->
+	<div class="main-wrapper">
+		<h1 class="page-title">府城時光消息</h1>
+        <p class="page-subtitle">探索台南最新動態、巷弄故事與文化活動</p>
+        
+        <div class="news-list">
+            
+            <!-- 新聞項目 1 -->
+            <div class="news-item">
+                <div class="news-img-box">
+                  <img src="006/01.jpeg" class="news-img" alt="新聞圖片1">
+                </div>
+                <div class="news-info">
+                    <span class="news-date">2026.05.28 ｜  饕客美食</span>
+                    <a href="006.html" class="news-headline">台南赤崁樓新美街裡的巷弄咖啡館，最美老屋早午餐！不斷回訪總是滿滿驚喜～</a>
+                    <p class="news-summary">台南歷史悠久的水仙宮市場內，藏著一家傳承數十年的蜜芋頭老店。店家堅持選用在地芋頭以慢火細細蜜製，打造出鬆軟不爛、甜而不膩的絕佳口感。這碗充滿手工溫度的古早味甜品，不僅承載了在地人從小吃到大的飲食記憶，近年更隨著台南美食觀光升溫，成為吸引無數外地觀光客深入體驗台南庶民文化與市場人情味的重要窗口。</p>
+              </div>
+            </div>
+
+            <!-- 新聞項目 2 -->
+            <div class="news-item">
+                <div class="news-img-box">
+                  <img src="007/02.jpg" class="news-img" alt="新聞圖片2">
+                </div>
+                <div class="news-info">
+                    <span class="news-date">2026.05.15 ｜ 在地焦點</span>
+                    <a href="007.html" class="news-headline">台南水仙宮市場飄香數十年！老字號「蜜芋頭」傳承古早味，綿密鬆軟成在地人與觀光客的記憶縮影</a>
+                    <p class="news-summary">緊鄰台南國華街的神農街（舊名北勢街），是目前台南保存最完善的清代老街。白天，飽經風霜的木造狹長街屋化身為特色咖啡館與文創工作室，散發內斂的文青氣息；入夜後，兩側古建築陸續點亮各式復古紅燈籠，將整條街營造出浪漫又神祕的復古氛圍。這條融合歷史、藝術與街廟文化的 300 年古老巷弄，正以其獨特的日夜雙重魅力，吸引無數旅人前來放慢腳步，細細品味台南特有的庶民歷史長河。</p>
+              </div>
+            </div>
+
+            <!-- 新聞項目 3 -->
+            <div class="news-item">
+              <div class="news-img-box">
+                    <img src="008/01.jpg" class="news-img" alt="新聞圖片3">
+                </div>
+                <div class="news-info">
+                    <span class="news-date">2026.04.30 ｜ 古蹟修護</span>
+                    <a href="008.html" class="news-headline">狂吸 1.6 萬人次登頂最夯古蹟！台南「赤崁樓」耗時多年修復完工，夜間市集與知府講古大玩穿越實境秀</a>
+                    <p class="news-summary">台南指標性古蹟赤崁樓耗時多年的修復工程正式完工，並在春節與連假期間魅力大爆發，3 天內狂吸超過 1.6 萬人次造訪。全新活化的赤崁樓推出超沉浸的「熱蘭遮市集」，讓民眾能換取仿古貨幣體驗荷蘭商人的日常，夜間更有扮演清代知府「蔣元樞」的演員現身說書、帶領遊客解謎，將歷史建築轉化為大型實境舞台。無論是精緻的夜間燈飾還是深度文化互動，都讓這座融合荷式遺蹟與清領風格的府城地標，展現出兼具質感與潮流的全新玩法。</p>
+              </div>  </div>  
+				
+				            <!-- 新聞項目 4 -->
+            <div class="news-item">
+                <div class="news-img-box">
+                  <img src="009/01.jpg" class="news-img" alt="新聞圖片1">
+                </div>
+                <div class="news-info">
+                    <span class="news-date">2026.04.26 ｜  饕客美食</span>
+                    <a href="009.html" class="news-headline">台南赤崁樓新美街裡的巷弄咖啡館，最美老屋早午餐！不斷回訪總是滿滿驚喜～</a>
+                    <p class="news-summary">餐廳由幾十年的台南老房子改建而成，保留了古老的大門、復古的磨石子地磚、大面窗格，並擺設了古老磅秤和大掛鐘等老件，營造出充滿時間沉澱的「生活感」。二樓採光極佳，且店內每個座位皆貼心配置了獨立插座。</p>
+              </div>
+            </div>
+
+            <!-- 新聞項目 5 -->
+            <div class="news-item">
+                <div class="news-img-box">
+                  <img src="010/01.jpg" class="news-img" alt="新聞圖片2">
+                </div>
+                <div class="news-info">
+                    <span class="news-date">2026.03.15 ｜ 饕客美食</span>
+                    <a href="010.html" class="news-headline">【台南美食】春蚵嗲:國華街超人氣蚵嗲店,隱藏版菜粽只要35元,驚人的爆量花生料,在地人的心頭好</a>
+                    <p class="news-summary">春蚵嗲是台南國華街人氣美食之一，春蚵嗲就位於永樂市場外、國華三街上，春蚵嗲攤位緊鄰一品味碗粿、阿松割包。這間春蚵嗲專賣炸蚵嗲、炸物，深受在地人和觀光客喜愛，不過除了炸物，春蚵嗲自家包的粽子只有懂得內行人才知道也好吃，菜粽$35、肉粽$45，個人大推菜粽有夠大顆，撥開滿滿爆量的花生溢出，愛吃菜粽的就懂，這CP值太強啦~~</p>
+              </div>
+            </div>
+
+            <!-- 新聞項目 6 -->
+            <div class="news-item">
+              <div class="news-img-box">
+                    <img src="011/01.jpg" class="news-img" alt="新聞圖片3">
+                </div>
+                <div class="news-info">
+                    <span class="news-date">2026.03.11 ｜ 饕客美食</span>
+                  <p class="news-summary">來到台南要到哪裡吃美食？當然就是國華街！對於台南人來說，這些沒有花俏招牌的街頭小攤販就是生活中不可或缺的一部分，比起正襟危坐的高級餐廳，來到台南邊走邊吃更能貼近當地生活，今天就為大家整理出台南小吃最大集散地「國華街」必吃美食20選，下次來台南玩時記得不要錯過了呦！</p>
+              </div>
+
+ </div></div></div>
+	<footer class="site-footer">
+		<div class="footer-content">
+			<p>© 2026 味遊台南 版權所有 | 聯絡我們：service@stust.edu.tw <br>
+			作者：4B3F0001 王凱均　4B3F0056 張馨</p>
+		</div>
+	</footer>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<?php
+  require_once("dbtools.inc.php");
+  date_default_timezone_set("Asia/Taipei");	
+
+  // 1. 建立資料連接
+  $link = create_connection();
+                
+  // 2. 執行 SQL 查詢（依時間由新到舊排序 DESC，最新發表的在最上面）
+  $sql = "SELECT * FROM message ORDER BY date DESC";
+  $result = execute_sql($link, "news", $sql);
+
+  // 3. 計算目前資料庫共有幾筆評論
+  $total_records = mysqli_num_rows($result);
+?>
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>味遊台南 - 饕客評論區</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&display=swap" rel="stylesheet">
+<style type="text/css">
+	:root {
+		--bg-color: #fbf9f5;
+		--primary-color: #a94442;
+		--secondary-color: #c89d55;
+		--text-dark: #332c25;
+		--text-light: #766e65;
+	}
+	body { 
+		margin: 0; 
+		padding: 0; 
+		background-color: var(--bg-color); 
+		display: flex; 
+		flex-direction: column; 
+		min-height: 100vh; 
+		font-family: "Georgia", "Noto Serif TC", "PingFang TC", serif;
+	}
+	/* --- 導覽列（維持與你原本風格一致） --- */
+	.aaa { 
+		background-color: #DAC7A2; 
+		padding: 0.8rem 2rem; 
+		display: flex; 
+		justify-content: space-between; 
+		align-items: center; 
+		width: 100%; 
+		box-sizing: border-box; 
+	}
+	.logo-box { display: flex; align-items: center; gap: 12px; }
+	.logo-img { height: 55px;  }
+	.logo-text { 
+		font-family: 'Noto Serif TC', Cambria, serif; 
+		font-size: 22pt; 
+		font-weight: bold; 
+		color: #3A2E2B; 
+		letter-spacing: 2px; 
+		text-shadow: 1px 1px 0px #fff, 2px 2px 0px #D4A373; 
+	}
+	.nav-links { display: flex; align-items: center; gap: 25px; }
+	.bbb { 
+		text-decoration: none;
+		color: #4A3E3D;
+		font-family: 'Noto Serif TC', serif;
+		font-size: 12pt; 
+		font-weight: 600; 
+		letter-spacing: 1.5px; 
+		border-bottom: 2px solid transparent;
+		padding-bottom: 6px; 
+	}
+	.bbb:hover, .bbb.current { 
+		color: #A94442; 
+		border-bottom: 2px solid #A94442; 
+	}
+	.fff.red-btn { 
+		background-color: var(--accent-red, #A64438);
+		font-size: 11pt;
+		color: #ffffff !important;
+		padding: 8px 20px;
+		border-radius: 30px; 
+		font-weight: bold;
+		text-decoration: none; 
+	}
+	
+	/* --- 評論區主體內容 --- */
+	.main-content { 
+		flex: 1;
+		max-width: 800px;
+		width: 100%;
+		margin: 0 auto;
+		padding: 50px 20px; 
+		box-sizing: border-box;
+	}
+	.page-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 40px;
+		border-bottom: 2px solid var(--secondary-color);
+		padding-bottom: 15px;
+	}
+	.page-title {
+		color: var(--primary-color);
+		margin: 0;
+		font-size: 20pt;
+	}
+	
+	/* 評論卡片樣式 */
+	.comment-card { 
+		background: #fff; 
+		padding: 30px;
+		border-radius: 8px; 
+		margin-bottom: 25px;
+		box-shadow: 0 4px 15px rgba(0,0,0,0.03); 
+		border-left: 5px solid var(--secondary-color); 
+		transition: transform 0.2s;
+	}
+	.comment-card:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+	}
+	.comment-meta {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 15px;
+		font-size: 11pt;
+		color: var(--text-light);
+	}
+	.comment-author {
+		font-weight: bold;
+		color: var(--text-dark);
+		background: #f0eae1;
+		padding: 4px 12px;
+		border-radius: 15px;
+	}
+	.comment-subject {
+		color: var(--primary-color);
+		font-size: 15pt;
+		margin-top: 0;
+		margin-bottom: 12px;
+		font-weight: bold;
+	}
+	.comment-text {
+		color: #4A3E3D;
+		font-size: 12pt;
+		line-height: 1.7;
+		white-space: pre-line; /* 保留換行 */
+	}
+	.no-comment {
+		text-align: center;
+		padding: 50px;
+		background: #fff;
+		border-radius: 8px;
+		color: var(--text-light);
+	}
+
+	/* --- 頁尾 --- */
+	.site-footer {
+		background-color: #2A362D; 
+		color: #E6E1D6;            
+		width: 100%;
+		font-family: "Georgia", "Noto Serif TC", serif; 
+	}
+	.footer-content {
+		max-width: 1200px;         
+		margin: 0 auto;            
+		padding: 25px 20px;        
+		text-align: center;        
+		font-size: 11pt;           
+		line-height: 1.6;
+	}
+</style>
+</head>
+
+<body>
+
+	<header class="aaa">
+		<div class="logo-box">
+			<img src="Home Logo.png" alt="LOGO" class="logo-img">
+			<span class="logo-text">味遊台南</span>
+		</div>
+		
+		<nav class="nav-links">
+			<a href="index.html" class="bbb">首頁</a>
+			<a href="Home3.html" class="bbb">新聞</a>
+			<a href="show_post.html" class="bbb current">評論區</a>
+		    <a href="Home4.html" class="bbb">聯絡我們</a>
+			<a href="home2.html" class="bbb">關於我們</a>
+			<a href="post.html" class="fff red-btn">評論</a>
+
+		</nav>
+	</header>
+
+	<main class="main-content">
+		<div class="page-header">
+			<h2 class="page-title">饕客足跡（共 <?php echo $total_records; ?> 則評論）</h2>
+			<a href="post.html" class="fff red-btn">✍️ 我要發表評論</a>
+		</div>
+
+		<?php if ($total_records == 0): ?>
+			<div class="no-comment">
+				<div style="font-size: 3rem; margin-bottom: 15px;">🍵</div>
+				<h3>目前還沒有任何評論</h3>
+				<p>成為第一個分享台南美味記憶的人吧！</p>
+			</div>
+		<?php else: ?>
+			<?php while ($row = mysqli_fetch_assoc($result)): ?>
+				<div class="comment-card">
+					<div class="comment-meta">
+						<span class="comment-author">👤 <?php echo htmlspecialchars($row['author']); ?></span>
+						<span>📅 <?php echo $row['date']; ?></span>
+					</div>
+					<h3 class="comment-subject"><?php echo htmlspecialchars($row['subject']); ?></h3>
+					<div class="comment-text"><?php echo htmlspecialchars($row['content']); ?></div>
+				</div>
+			<?php endwhile; ?>
+		<?php endif; ?>
+	</main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>© 2026 味遊台南 版權所有 | 聯絡我們：service@stust.edu.tw <br>
+            作者：4B3F0001 王凱均　4B3F0056 張馨</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+<?php
+  // 關閉資料庫連接
+  mysqli_close($link);
+?>

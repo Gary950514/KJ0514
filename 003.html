@@ -1,0 +1,319 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>味遊台南 - 赤崁樓導覽</title>
+    <!-- 補上全站字體引用連結 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+<style type="text/css">
+    /* ==========================================
+       【全域樣式：純色低飽和溫潤背景】
+       ========================================== */
+    body {
+        background-color: #F4F1EA; /* 溫潤米色基底，柔和不刺眼 */
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        font-family: "Georgia", "Noto Serif TC", "PingFang TC", "Microsoft JhengHei", serif; /* 整合全站主字體 */
+    }
+
+    /* 主體內容容器：沉穩質感的白幅區塊 */
+    .main-wrapper {
+        max-width: 1100px;
+        width: 90%;
+        margin: 40px auto;
+        background-color: #FFFFFF; /* 純白區塊，讓歷史色系與照片更突出 */
+        box-shadow: 0 10px 30px rgba(92, 75, 65, 0.05); /* 帶有微弱棕色調的柔和陰影 */
+        border-radius: 8px;
+        padding: 60px 40px;
+        box-sizing: border-box;
+    }
+
+    /* ==========================================
+       【導覽列】低飽和溫潤配色（與上一頁一模一樣）
+       ========================================== */
+	.aaa {
+		background-color: #DAC7A2;
+		padding: 0.8rem 2rem;
+		display: flex !important;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0;
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+
+	/* --- 導覽列按鈕字體優化 --- */
+	.bbb {
+		text-decoration: none;
+		color: #4A3E3D;              /* 改為優雅的深焙咖啡色，與 LOGO 字體呼應，辨識度更高 */
+		padding-bottom: 6px; 
+		font-family: 'Noto Serif TC', "PingFang TC", "Microsoft JhengHei", serif; /* 優先使用襯線體，帶有文青感 */
+		font-size: 12pt;             /* 微調字體大小，看起來更精緻 */
+		font-weight: 600;            /* 半粗體，讓字體清晰 */
+		letter-spacing: 1.5px;       /* 稍微拉開字距，營造現代呼吸感 */
+		transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); /* 讓滑鼠懸停動畫更柔順 */
+		border-bottom: 2px solid transparent;
+	}
+
+	/* 滑鼠移上去的狀態 */
+	.bbb:hover {
+		color: #A94442;              /* 懸停時變成你設定的「安平磚紅」變數顏色 */
+		border-bottom: 2px solid #A94442; 
+	}
+
+	/* 目前所在頁面的狀態（例如：關於我們） */
+	.bbb.current {
+		color: #A94442;              /* 啟用狀態同樣使用安平磚紅 */
+		border-bottom: 2px solid #A94442; /* 下底線與文字同色 */
+		font-weight: bold;
+	}
+
+    .bbb:active {
+        border-bottom: 2px solid #75332B; 
+        color: #75332B;
+    }
+
+    /* 評論膠囊按鈕 */
+    .fff.red-btn {
+        background-color: #9E4A3F; /* 古典磚紅 */
+        font-size: 11pt;
+        color: #ffffff !important;     
+        padding: 8px 22px;          
+        border-radius: 30px;            
+        font-weight: bold;           
+        text-decoration: none;       
+        display: inline-block;       
+        box-shadow: 0 4px 10px rgba(158, 74, 63, 0.15);
+        transition: all 0.2s ease;
+    }
+
+    .fff.red-btn:hover {
+        background-color: #75332B; /* 懸停變深磚紅 */
+        transform: translateY(-1px);
+    }
+
+    /* ==========================================
+       【內文與圖片樣式：完美套用歷史沉穩感】
+       ========================================== */
+    .container {
+        color: #2A362D; /* 深墨綠色，展現古磚苔痕的歷史感 */
+        width: 100%;
+        margin: 0 auto 40px auto;           
+        box-sizing: border-box;
+        font-size: 22pt;
+        font-weight: bold;
+        text-align: center;
+        line-height: 1.5;
+    }
+
+    .center-img {
+        display: block;    
+        margin: 35px auto; 
+        max-width: 100%;   
+        height: auto;      
+        border-radius: 4px;
+    }
+
+    .text {
+        width: 100%;
+        margin: 25px auto;        
+        padding: 0 40px; 
+        box-sizing: border-box;
+        font-size: 13pt;
+        line-height: 1.8; /* 舒適的行高 */
+        text-align: center;       
+        display: block;
+        color: #4A4A4A; /* 深灰內文 */
+    }
+
+    /* 特色標題區塊 */
+	.text-bg {
+        color: #2A362D;           /* 深墨綠字 */
+        background-color: #E2DDD5; /* 低飽和溫潤米灰 */
+        padding: 15px 25px;
+        border-radius: 4px;        
+        font-size: 16pt;
+        display: block;            
+        text-align: left;          /* 文字靠左對齊 */
+        font-weight: bold;
+        border-left: 12px solid #9E4A3F; /* 左邊粗邊框（古典磚紅） */
+        height: auto;      
+        width: 100%;
+        max-width: 1000px;          
+        margin: 40px auto 20px auto; /* 區塊置中 */
+        box-sizing: border-box;
+    }
+
+	.text2{
+		color: #2A362D;           /* 深墨綠字 */
+		padding: 15px 25px;
+		border-radius: 4px;
+		font-size: 16pt;
+		display: block;
+		text-align: left;          
+		font-weight: bold;
+		border-left: 12px solid #C5896F; /* 左邊粗邊框 */
+		height: auto;
+		width: 100%;
+		max-width: 1000px;          
+		margin: 40px auto 20px auto; 
+		box-sizing: border-box;
+		background-color: #F4EBE1;
+    }
+	
+	.text3{
+        color: #2A362D;             /* 深墨綠字 */
+        font-size: 16pt;            
+        font-weight: bold;
+        text-align: left;           
+        border-left: 8px solid #E3519E ; /* 左側裝飾線 */
+        padding-left: 15px;         
+        margin: 45px auto 20px auto;
+        width: 100%;
+        max-width: 970px;           
+        box-sizing: border-box;
+        line-height: 1.4;
+    }
+
+	.logo-box {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+
+	.logo-img {
+		height: 55px;              
+		width: auto;               
+		max-height: 100%;          
+	}
+
+	.logo-text {
+		font-family: 'Noto Serif TC', Cambria, "Times New Roman", serif; 
+		font-size: 22pt;       
+		font-weight: 700;      
+		color: #3A2E2B;        
+		letter-spacing: 4px;   
+		text-shadow: 1px 1px 0px #fff, 2px 2px 0px #D4A373; 
+	}
+
+	/* --- 頁尾優化 (已成功同步字體風格) --- */
+	.site-footer {
+		background-color: #2A362D; /* 深墨綠色結尾 */
+		color: #E6E1D6;            
+		width: 100%;
+		margin-top: auto;          
+		font-family: "Georgia", "Noto Serif TC", "PingFang TC", serif; /* 同步襯線字型組合 */
+	}
+
+	.footer-content {
+		max-width: 1200px;         
+		margin: 0 auto;            
+		padding: 25px 20px;        
+		text-align: center;        
+		font-size: 11pt;           
+		line-height: 1.6;
+	}
+
+</style>
+</head>
+
+<body>
+    
+	<header class="aaa">
+		<div class="logo-box">
+			<img src="Home Logo.png" alt="LOGO" class="logo-img">
+			<span class="logo-text">味遊台南</span>
+		</div>
+		<nav class="nav-links">
+			<a href="index.html" class="bbb">首頁</a>
+			<a href="Home3.html" class="bbb">新聞</a>
+			<a href="show_post.html" class="bbb">評論區</a>
+		    <a href="Home4.html" class="bbb">聯絡我們</a>
+			<a href="home2.html" class="bbb">關於我們</a>
+			<a href="post.html" class="fff red-btn">評論</a>
+		</nav>
+	</header>
+
+	<!-- 主體白色襯底包覆區塊 -->
+	<div class="main-wrapper">
+		<p class="container">台南【赤崁樓】必訪的國定古蹟，漫步江南風庭園、魁星爺求金榜題名。</p>
+		<img class="center-img" src="003/01.jpg" width="1000" height="1200" alt="國華街美食1" />
+		
+		<p class="text">說到台南中西區必訪景點，絕對不能錯過古蹟景點「台南赤崁樓」啦！這裡是台南的精神象徵，紅磚瓦牆配上藍天真的超級美。最迷人的就是那座古色古香的庭園， 有小橋流水、有歷史石碑，還有色彩鮮艷的錦鯉在池中悠游， 光是坐在旁邊欣賞風景就覺得好愜意～而且這裡也是許多考生必來朝聖的聖地，一定要來拜魁星爺求個金榜題名。 趕快跟著小兔小安一家人來看看這座百年的台南城堡吧！</p>
+		
+		<p class="text3">台南赤崁樓營業資訊<br>
+		店名：台南赤崁樓<br>
+		地址：臺南市中西區民族路二段212號<br>
+		營業時間：08:30–21:00</p>
+
+		<p class="text-bg">台南赤崁樓交通地點</p>
+
+		<img class="center-img" src="003/02.jpg" width="1000" height="1200" alt="國華街交通" />
+		<p class="text">「台南赤崁樓」位在台南市中心的民族路上，周邊美食超級多！停車地方的話，其實赤崁樓旁邊有幾格路邊的收費停車格，不過因為是熱門觀光區，假日通常一位難求，小兔建議大家可以停稍微遠一點的海安路地下停車場再走過來，沿途還可以順便吃吃喝喝，買杯義豐冬瓜茶消消暑！</p>
+		
+		<p class="text-bg">台南赤崁樓門票價格與開放時間</p>
+		<img class="center-img" src="003/03.jpg" width="1000" height="1200" alt="國華街美食2" />
+		<p class="text">入園前先來看看最新的票價資訊。 門口有清楚的告示牌，價格其實蠻親民的，算是維護古蹟的小小貢獻。</p>
+		
+		<p class="text3">全票： NT$70元 (一般民眾)<br>
+		半票： NT$35元 (學生、65歲以上長者)<br>
+		免費參觀：台南市民、6歲以下兒童、身心障礙者。<br>
+		開放時間：08:30 – 21:00</p>
+
+		<p class="text-bg">台南赤崁樓環境介紹</p>
+		<p class="text2">赤崁樓漫步江南風庭園</p>
+		
+		<img class="center-img" src="003/04.jpg" width="1000" height="1200" alt="鼎富發1" />
+		<img class="center-img" src="003/05.jpg" width="1000" height="1200" alt="鼎富發2" />   
+		<p class="text">一走進赤崁樓，首先迎接我們的就是這片綠意盎然的大草皮，雖然主建築周圍有搭起鷹架，目前正在進行修復工程，但前面的庭園維護得非常好，視野很開闊，漫步其中真的很舒服。</p>
+		
+		<img class="center-img" src="003/06.jpg" width="1000" height="1200" alt="鼎富發3" />    
+		<img class="center-img" src="003/07.jpg" width="1000" height="1200" alt="國華街景1" /> 
+		<p class="text">重點來了！「台南赤崁樓」的庭園造景真的太美了！經典的紅色圓形拱門配上石橋，超級有江南庭園的氛圍，尤其池子裡的錦鯉每一隻都好漂亮鮮豔，吸引不少遊客的駐足與拍照。</p>
+		
+		<p class="text2">台南赤崁樓文昌閣</p>
+
+		<img class="center-img" src="003/08.jpg" width="1000" height="1200" alt="國華街景2" />    
+		<p class="text">雖然海神廟目前有部分圍起來修復，但文昌閣還是可以參觀的喔！ 走上二樓，這裡供奉著傳說中的魁星爺是考生必參拜的神明，另外一樓的江南風格也十分好拍照。</p>
+		
+		<img class="center-img" src="003/09.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<img class="center-img" src="003/10.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<img class="center-img" src="003/11.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<p class="text">可以自由地在閣樓與穿廊之間拍照，也有展示整個園區的歷史典故。</p>
+		
+		<img class="center-img" src="003/12.jpg" width="1000" height="1200" alt="國華街景3" />  
+		<p class="text">魁星爺右手拿著硃筆，左手拿著墨斗，還有那獨特的獨占鰲頭姿勢，是掌管考運的神明。聽老一輩的人說非常靈驗！如果你家有要考會考、學測或是公職的朋友， 來到這裡記得一定要誠心祈求魁星爺保佑，希望能金榜題名喔！</p>
+		
+		<p class="text2">台南赤崁樓石馬與御路碑</p>
+
+		<img class="center-img" src="003/13.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<img class="center-img" src="003/14.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<img class="center-img" src="003/15.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<p class="text">另外還有許多壯觀的石碑，上面刻滿了密密麻麻的文字，以及馱著石碑的贔屭長得像烏龜的神獸排列成一排，場面非常壯觀，見證了台南幾百年來的歷史變遷。來這裡除了拍照，看看這些古物，感受一下歷史的厚度也是很棒的體驗。</p>
+		
+		<p class="text-bg">台南赤崁樓營業資訊</p>
+		<p class="text3">店名：台南赤崁樓<br>
+		地址：臺南市中西區民族路二段212號<br>
+		營業時間：08:30–21:00</p>
+		
+		<p class="text-bg">台南赤崁樓附近景點</p>
+		<img class="center-img" src="003/16.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<p class="text">按照台南中西區景點來看，台南赤崁樓附近景點要安排順遊，南門公園跟美術二館最近，有好玩的親子公園與美美的美術館可以走走欣賞美術作品。想要厲害一點的景點，那就選擇河樂廣場跟健康綠洲公園就對了，另外想要約會喝咖啡那就建議到星巴克台南文創門市很值得納入行程！</p>
+	</div>
+    
+	<footer class="site-footer">
+		<div class="footer-content">
+			<p>© 2026 味遊台南 版權所有 | 聯絡我們：service@stust.edu.tw <br>
+			作者：4B3F0001 王凱均　4B3F0056 張馨</p>
+		</div>
+	</footer>
+</body>
+</html>

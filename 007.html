@@ -1,0 +1,298 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>味遊台南 - 國華街美食</title>
+    <!-- 補上全站字體引用連結 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+<style type="text/css">
+    /* ==========================================
+       【全域樣式：純色低飽和溫潤背景】
+       ========================================== */
+    body {
+        background-color: #F4F1EA; /* 溫潤米色基底，柔和不刺眼 */
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        font-family: "Georgia", "Noto Serif TC", "PingFang TC", "Microsoft JhengHei", serif; /* 整合全站主字體 */
+    }
+
+    /* 主體內容容器：沉穩質感的白幅區塊 */
+    .main-wrapper {
+        max-width: 1100px;
+        width: 90%;
+        margin: 40px auto;
+        background-color: #FFFFFF; /* 純白區塊，讓歷史色系與照片更突出 */
+        box-shadow: 0 10px 30px rgba(92, 75, 65, 0.05); /* 帶有微弱棕色調的柔和陰影 */
+        border-radius: 8px;
+        padding: 60px 40px;
+        box-sizing: border-box;
+    }
+
+    /* ==========================================
+       【導覽列】低飽和溫潤配色（與上一頁一模一樣）
+       ========================================== */
+	.aaa {
+		background-color: #DAC7A2;
+		padding: 0.8rem 2rem;
+		display: flex !important;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0;
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 25px;                      /* 自動生成 25px 完美按鈕間距，拋棄 nbsp */
+    }
+
+	/* --- 導覽列按鈕字體優化 --- */
+	.bbb {
+		text-decoration: none;
+		color: #4A3E3D;              /* 改為優雅的深焙咖啡色，與 LOGO 字體呼應，辨識度更高 */
+		padding-bottom: 6px; 
+		font-family: 'Noto Serif TC', "PingFang TC", "Microsoft JhengHei", serif; /* 優先使用襯線體，帶有文青感 */
+		font-size: 12pt;             /* 微調字體大小，看起來更精緻 */
+		font-weight: 600;            /* 半粗體，讓字體清晰 */
+		letter-spacing: 1.5px;       /* 稍微拉開字距，營造現代呼吸感 */
+		transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); /* 讓滑鼠懸停動畫更柔順 */
+		border-bottom: 2px solid transparent;
+	}
+
+	/* 滑鼠移上去的狀態 */
+	.bbb:hover {
+		color: #A94442;              /* 懸停時變成你設定的「安平磚紅」變數顏色 */
+		border-bottom: 2px solid #A94442; 
+	}
+
+	/* 目前所在頁面的狀態（例如：關於我們） */
+	.bbb.current {
+		color: #A94442;              /* 啟用狀態同樣使用安平磚紅 */
+		border-bottom: 2px solid #A94442; /* 下底線與文字同色 */
+		font-weight: bold;
+	}
+    .bbb:active {
+        border-bottom: 2px solid #75332B; 
+        color: #75332B;
+    }
+
+    /* 評論膠囊按鈕 */
+    .fff.red-btn {
+        background-color: #9E4A3F; /* 古典磚紅 */
+        font-size: 11pt;
+        color: #ffffff !important;     
+        padding: 8px 22px;          
+        border-radius: 30px;            
+        font-weight: bold;           
+        text-decoration: none;       
+        display: inline-block;       
+        box-shadow: 0 4px 10px rgba(158, 74, 63, 0.15);
+        transition: all 0.2s ease;
+    }
+
+    .fff.red-btn:hover {
+        background-color: #75332B; /* 懸停變深磚紅 */
+        transform: translateY(-1px);
+    }
+
+    /* ==========================================
+       【內文與圖片樣式：完美套用歷史沉穩感】
+       ========================================== */
+    .container {
+        color: #2A362D; /* 深墨綠色，展現古磚苔痕的歷史感 */
+        width: 100%;
+        margin: 0 auto 40px auto;           
+        box-sizing: border-box;
+        font-size: 22pt;
+        font-weight: bold;
+        text-align: center;
+        line-height: 1.5;
+    }
+
+    .center-img {
+        display: block;    
+        margin: 35px auto; 
+        max-width: 100%;   
+        height: auto;      
+        border-radius: 4px;
+    }
+
+    .text {
+        width: 100%;
+        margin: 25px auto;        
+        padding: 0 40px; 
+        box-sizing: border-box;
+        font-size: 13pt;
+        line-height: 1.8; /* 舒適的行高 */
+        text-align: left;       
+        display: block;
+        color: #4A4A4A; /* 深灰內文 */
+    }
+
+    /* 特色標題區塊 */
+	.text-bg {
+        color: #2A362D;           /* 深墨綠字 */
+        background-color: #E2DDD5; /* 低飽和溫潤米灰 */
+        padding: 15px 25px;
+        border-radius: 4px;        
+        font-size: 16pt;
+        display: block;            
+        text-align: left;          /* 文字靠左對齊 */
+        font-weight: bold;
+        border-left: 12px solid #9E4A3F; /* 左邊粗邊框（古典磚紅） */
+        height: auto;      
+        width: 100%;
+        max-width: 1000px;          
+        margin: 40px auto 20px auto; /* 區塊置中 */
+        box-sizing: border-box;
+    }
+
+	.text2{
+		color: #2A362D;           /* 深墨綠字 */
+		padding: 15px 25px;
+		border-radius: 4px;
+		font-size: 16pt;
+		display: block;
+		text-align: left;          
+		font-weight: bold;
+		border-left: 12px solid #C5896F; /* 左邊粗邊框 */
+		height: auto;
+		width: 100%;
+		max-width: 1000px;          
+		margin: 40px auto 20px auto; 
+		box-sizing: border-box;
+		background-color: #F4EBE1;
+    }
+	
+	.text3{
+        color: #2A362D;             /* 深墨綠字 */
+        font-size: 16pt;            
+        font-weight: bold;
+        text-align: left;           
+        border-left: 8px solid #E3519E ; /* 左側裝飾線 */
+        padding-left: 15px;         
+        margin: 45px auto 20px auto;
+        width: 100%;
+        max-width: 970px;           
+        box-sizing: border-box;
+        line-height: 1.4;
+    }
+
+	.logo-box {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+
+	.logo-img {
+		height: 55px;              
+		width: auto;               
+		max-height: 100%;          
+	}
+
+	.logo-text {
+		font-family: 'Noto Serif TC', Cambria, "Times New Roman", serif; 
+		font-size: 22pt;       
+		font-weight: 700;      
+		color: #3A2E2B;        
+		letter-spacing: 4px;   
+		text-shadow: 1px 1px 0px #fff, 2px 2px 0px #D4A373; 
+	}
+
+	/* --- 頁尾優化 (已成功同步字體風格) --- */
+	.site-footer {
+		background-color: #2A362D; /* 深墨綠色結尾 */
+		color: #E6E1D6;            
+		width: 100%;
+		margin-top: auto;          
+		font-family: "Georgia", "Noto Serif TC", "PingFang TC", serif; /* 同步襯線字型組合 */
+	}
+
+	.footer-content {
+		max-width: 1200px;         
+		margin: 0 auto;            
+		padding: 25px 20px;        
+		text-align: center;        
+		font-size: 11pt;           
+		line-height: 1.6;
+	}
+
+</style>
+</head>
+
+<body>
+    
+	<header class="aaa">
+		<div class="logo-box">
+			<img src="Home Logo.png" alt="LOGO" class="logo-img">
+			<span class="logo-text">味遊台南</span>
+		</div>
+		<nav class="nav-links">
+			<a href="index.html" class="bbb">首頁</a>
+			<a href="Home3.html" class="bbb">新聞</a>
+			<a href="show_post.html" class="bbb">評論區</a>
+		    <a href="Home4.html" class="bbb">聯絡我們</a>
+			<a href="home2.html" class="bbb">關於我們</a>
+			<a href="post.html" class="fff red-btn">評論</a>
+		</nav>
+	</header>
+
+	<!-- 主體白色襯底包覆區塊 -->
+	<div class="main-wrapper">
+		<p class="container">台南｜重返清代街道：神農街的日與夜，一場穿越 300 年的復古燈籠夢</p>
+		<img class="center-img" src="007/03.jpg" width="1000" height="1200" alt="國華街美食1" />
+				<img class="center-img" src="007/04.jpg" width="1000" height="1200" alt="國華街交通" />
+		<p class="text">每次來到台南，國華街的熱鬧市集似乎成了不需思考的必訪行程。但這一次，在品嚐完國華街的美食後，我決定轉個彎，走進那條總在心中偶爾浮現、散發著奇妙特有氛圍的巷弄——神農街。</p>
+		
+		<p class="text-bg">走進保存最完善的清代時光</p>
+		<p class="text">神農街，舊名為「北勢街」，是目前台南保存最完善的清代街道，默默地承載著 300 多年的歷史重量。
+
+踏上石板路，彷彿瞬間穿越了時空屏障。這裡不像是被刻意營造的觀光景點，更像是時光在此凝結的活化石。街道兩旁盡是傳統的狹長型街屋，屋子前方緊鄰街道，據說早期後方可以直接連通北勢港，生動地展現了昔日「五條港」區域繁華的運輸歷史。</p><br>
+
+	
+		<p class="text-bg">文青與藝術的古老匯集地</p>
+				<p class="text">白天的神農街顯得安靜而內斂，非常適合像我們這樣的旅人慢慢閒逛。
+
+那些看似飽經風霜的木造老屋，如今被賦予了新的生命。許多老屋被改造為特色咖啡館、手作工作室與風格獨特的文創店。店家們巧妙地保留了古老的木門、天井和磚牆，讓懷舊與創意在此完美融合。隨處可見的藝術壁畫與復古擺飾（像是那尊神氣的黃袍公仔），都讓這條古老巷弄充滿了發現的樂趣。</p>
+
+
+
+		<img class="center-img" src="007/06.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<img class="center-img" src="007/07.jpg" width="1000" height="1200" alt="國華街景3" /> 
+				<p class="text2">越夜越美麗：紅燈籠下的復古夢</p>
+						<p class="text">如果說白天的神農街是位低調的文青，那夜晚的神農街就是位迷人的淑女。
+
+隨著傍晚造訪，街道兩側的古建築陸續掛起各式燈籠。當紅光輝映，整條街被點亮成一種既浪漫又神祕的氛圍。看著上方寫著「2026」、「神農街」字樣的花燈，耳邊彷彿能聽到昔日商賈雲集的喧囂聲。
+
+難怪人們常說神農街「越夜越美麗」，這種日夜截然不同的魅力，真的要親自走一趟才能體會。</p>
+<p class="text2">結語：在古都，慢下來就對了</p>
+
+		
+		<p class="text">神農街不僅僅是一條街，它更是一座活生生的城市博物館。這裡鄰近著名的街廟「金華府」與「藥王廟」，濃厚的歷史底蘊與宗教氛圍交織其中。
+
+台南果然是名副其實的古都，充滿了濃厚的歷史感。來到這裡，請記得卸下平日的匆忙，給自己一點時間，在這條 300 年的歷史長河中慢悠悠地「散步」吧。</p>
+		
+		<img class="center-img" src="007/08.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<img class="center-img" src="007/09.jpg" width="1000" height="1200" alt="國華街景3" /> 
+		<p class="text2">給遊客的小本本</p>
+				<p class="text3"> 地點：台南市中西區神農街（舊名北勢街）<br>
+
+特色：300 年清代老街、復古燈籠、文創藝術、街廟古蹟<br>
+
+建議時段：傍晚 5 點後造訪，可以同時感受日夜不同的燈籠風情。</p>
+
+
+	</div>
+    
+	<footer class="site-footer">
+		<div class="footer-content">
+			<p>© 2026 味遊台南 版權所有 | 聯絡我們：service@stust.edu.tw <br>
+			作者：4B3F0001 王凱均　4B3F0056 張馨</p>
+		</div>
+	</footer>
+</body>
+</html>

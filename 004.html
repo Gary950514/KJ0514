@@ -1,0 +1,315 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>味遊台南 - 安平老街美食</title>
+    <!-- 補上全站字體引用連結 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+<style type="text/css">
+    /* ==========================================
+       【全域樣式：純色低飽和溫潤背景】
+       ========================================== */
+    body {
+        background-color: #F4F1EA; /* 溫潤米色基底，柔和不刺眼 */
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        font-family: "Georgia", "Noto Serif TC", "PingFang TC", "Microsoft JhengHei", serif; /* 整合全站主字體 */
+    }
+
+    /* 主體內容容器：沉穩質感的白幅區塊 */
+    .main-wrapper {
+        max-width: 1100px;
+        width: 90%;
+        margin: 40px auto;
+        background-color: #FFFFFF; /* 純白區塊，讓歷史色系與照片更突出 */
+        box-shadow: 0 10px 30px rgba(92, 75, 65, 0.05); /* 帶有微弱棕色調的柔和陰影 */
+        border-radius: 8px;
+        padding: 60px 40px;
+        box-sizing: border-box;
+    }
+
+    /* ==========================================
+       【導覽列】低飽和溫潤配色（與上一頁一模一樣）
+       ========================================== */
+	.aaa {
+		background-color: #DAC7A2;
+		padding: 0.8rem 2rem;
+		display: flex !important;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0;
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+
+	/* --- 導覽列按鈕字體優化 --- */
+	.bbb {
+		text-decoration: none;
+		color: #4A3E3D;              /* 改為優雅的深焙咖啡色，與 LOGO 字體呼應，辨識度更高 */
+		padding-bottom: 6px; 
+		font-family: 'Noto Serif TC', "PingFang TC", "Microsoft JhengHei", serif; /* 優先使用襯線體，帶有文青感 */
+		font-size: 12pt;             /* 微調字體大小，看起來更精緻 */
+		font-weight: 600;            /* 半粗體，讓字體清晰 */
+		letter-spacing: 1.5px;       /* 稍微拉開字距，營造現代呼吸感 */
+		transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); /* 讓滑鼠懸停動畫更柔順 */
+		border-bottom: 2px solid transparent;
+	}
+
+	/* 滑鼠移上去的狀態 */
+	.bbb:hover {
+		color: #A94442;              /* 懸停時變成你設定的「安平磚紅」變數顏色 */
+		border-bottom: 2px solid #A94442; 
+	}
+
+	/* 目前所在頁面的狀態（例如：關於我們） */
+	.bbb.current {
+		color: #A94442;              /* 啟用狀態同樣使用安平磚紅 */
+		border-bottom: 2px solid #A94442; /* 下底線與文字同色 */
+		font-weight: bold;
+	}
+
+    .bbb:active {
+        border-bottom: 2px solid #75332B; 
+        color: #75332B;
+    }
+
+    /* 評論膠囊按鈕 */
+    .fff.red-btn {
+        background-color: #9E4A3F; /* 古典磚紅 */
+        font-size: 11pt;
+        color: #ffffff !important;     
+        padding: 8px 22px;          
+        border-radius: 30px;            
+        font-weight: bold;           
+        text-decoration: none;       
+        display: inline-block;       
+        box-shadow: 0 4px 10px rgba(158, 74, 63, 0.15);
+        transition: all 0.2s ease;
+    }
+
+    .fff.red-btn:hover {
+        background-color: #75332B; /* 懸停變深磚紅 */
+        transform: translateY(-1px);
+    }
+
+    /* ==========================================
+       【內文與圖片樣式：完美套用歷史沉穩感】
+       ========================================== */
+    .container {
+        color: #2A362D; /* 深墨綠色，展現古磚苔痕的歷史感 */
+        width: 100%;
+        margin: 0 auto 40px auto;           
+        box-sizing: border-box;
+        font-size: 22pt;
+        font-weight: bold;
+        text-align: center;
+        line-height: 1.5;
+    }
+
+    .center-img {
+        display: block;    
+        margin: 35px auto; 
+        max-width: 100%;   
+        height: auto;      
+        border-radius: 4px;
+    }
+
+    .text {
+        width: 100%;
+        margin: 25px auto;        
+        padding: 0 40px; 
+        box-sizing: border-box;
+        font-size: 13pt;
+        line-height: 1.8; /* 舒適的行高 */
+        text-align: center;       
+        display: block;
+        color: #4A4A4A; /* 深灰內文 */
+    }
+
+    /* 特色標題區塊 */
+	.text-bg {
+        color: #2A362D;           /* 深墨綠字 */
+        background-color: #E2DDD5; /* 低飽和溫潤米灰 */
+        padding: 15px 25px;
+        border-radius: 4px;        
+        font-size: 16pt;
+        display: block;            
+        text-align: left;          /* 文字靠左對齊 */
+        font-weight: bold;
+        border-left: 12px solid #9E4A3F; /* 左邊粗邊框（古典磚紅） */
+        height: auto;      
+        width: 100%;
+        max-width: 1000px;          
+        margin: 40px auto 20px auto; /* 區塊置中 */
+        box-sizing: border-box;
+    }
+
+	.text2{
+		color: #2A362D;           /* 深墨綠字 */
+		padding: 15px 25px;
+		border-radius: 4px;
+		font-size: 16pt;
+		display: block;
+		text-align: left;          
+		font-weight: bold;
+		border-left: 12px solid #C5896F; /* 左邊粗邊框 */
+		height: auto;
+		width: 100%;
+		max-width: 1000px;          
+		margin: 40px auto 20px auto; 
+		box-sizing: border-box;
+		background-color: #F4EBE1;
+    }
+	
+	.text3{
+        color: #2A362D;             /* 深墨綠字 */
+        font-size: 16pt;            
+        font-weight: bold;
+        text-align: left;           
+        border-left: 8px solid #E3519E ; /* 左側裝飾線 */
+        padding-left: 15px;         
+        margin: 45px auto 20px auto;
+        width: 100%;
+        max-width: 970px;           
+        box-sizing: border-box;
+        line-height: 1.4;
+    }
+
+	.logo-box {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+
+	.logo-img {
+		height: 55px;              
+		width: auto;               
+		max-height: 100%;          
+	}
+
+	.logo-text {
+		font-family: 'Noto Serif TC', Cambria, "Times New Roman", serif; 
+		font-size: 22pt;       
+		font-weight: 700;      
+		color: #3A2E2B;        
+		letter-spacing: 4px;   
+		text-shadow: 1px 1px 0px #fff, 2px 2px 0px #D4A373; 
+	}
+
+	/* --- 頁尾優化 (已成功同步字體風格) --- */
+	.site-footer {
+		background-color: #2A362D; /* 深墨綠色結尾 */
+		color: #E6E1D6;            
+		width: 100%;
+		margin-top: auto;          
+		font-family: "Georgia", "Noto Serif TC", "PingFang TC", serif; /* 同步襯線字型組合 */
+	}
+
+	.footer-content {
+		max-width: 1200px;         
+		margin: 0 auto;            
+		padding: 25px 20px;        
+		text-align: center;        
+		font-size: 11pt;           
+		line-height: 1.6;
+	}
+
+</style>
+</head>
+
+<body>
+    
+	<header class="aaa">
+		<div class="logo-box">
+			<img src="Home Logo.png" alt="LOGO" class="logo-img">
+			<span class="logo-text">味遊台南</span>
+		</div>
+		<nav class="nav-links">
+			<a href="index.html" class="bbb">首頁</a>
+			<a href="Home3.html" class="bbb">新聞</a>
+			<a href="show_post.html" class="bbb">評論區</a>
+		    <a href="Home4.html" class="bbb">聯絡我們</a>
+			<a href="home2.html" class="bbb">關於我們</a>
+			<a href="post.html" class="fff red-btn">評論</a>
+		</nav>
+	</header>
+
+	<!-- 主體白色襯底包覆區塊 -->
+	<div class="main-wrapper">
+		<p class="container">【台南】安平景點一日遊：2026安平老街美食必買＆安平附近景點地圖攻略</p>
+		<img class="center-img" src="004/01.jpg" width="1000" height="1200" alt="國華街美食1" />
+		
+		<p class="text">台南安平一日遊怎麼規劃？看這篇超詳細安平景點介紹就對了！必吃的安平老街美食，文章牛肉湯、王氏魚皮、同記安平豆花；安平老街必買伴手禮，林永泰興蜜餞、安平小舖、得意蝦餅等，通通彙整在安平老街地圖中囉～<br><br>
+		安平老街附近景點超級精彩，安平古堡、安平樹屋、大魚的祝福…都是台南必去景點，光安平就能玩上1-2天呢。還有停車場、交通、住宿等資訊，波比也幫大家整理好啦，一起來有300多年歷史的台灣第一街探險吧！</p>
+		
+		<p class="text-bg">安平老街地圖＆安平景點一日遊規劃</p>
+
+		<img class="center-img" src="004/02.jpg" width="1000" height="1200" alt="國華街交通" />
+		<p class="text">最夯的安平景點＆安平老街美食，波比都繪製在上方安平老街地圖裡了，安平一日遊規劃起來是不是很輕鬆呢！</p>
+		
+		<p class="text-bg">安平老街歷史介紹</p>
+		<img class="center-img" src="004/03.jpg" width="1000" height="1200" alt="國華街美食2" />
+		<p class="text">台南安平老街 (延平街、中興街、效忠街) 被稱作「台灣第一街」，是300多年前荷蘭人在台灣興建的第一條街道。最熱鬧的延平街曾於1995年拓寬，因此歷史感相對薄弱；反而是中興街、效忠街保存較為完整，更適合訪古尋幽。</p>
+		
+		<img class="center-img" src="004/04.jpg" width="1000" height="1200" alt="鼎富發1" />
+		<p class="text">老街上店家以伴手禮為主、餐廳不多，因此下面介紹的美食並非全部都在安平老街上；而是涵蓋所有熱門的安平老街附近美食必買，但都是從老街出發走路能到的距離，看到喜歡的餐廳就放心出發吧～</p>
+		
+		<p class="text-bg">安平老街美食推薦</p>
+
+		<p class="text2">1. 文章牛肉湯</p>
+		<img class="center-img" src="004/05.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<img class="center-img" src="004/06.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<p class="text">人氣超旺牛肉湯老店，為因應排隊人潮，在老店不遠處開了一家新店面，用餐環境寬敞乾淨很讚喔。<br><br>
+		招招牌牛肉湯 ($190) 肉有點柴；但限量特選牛肉湯 ($290) 就厲害了，不僅牛肉厚又嫩、鮮甜度也更上一層，好喝！</p>
+		<p class="text3">地址：台南市安平區安平路300號 <br>
+		營業時間：10:30-02:00 (周四公休)</p>
+
+		<p class="text2">2. 王氏魚皮</p>
+		<img class="center-img" src="004/07.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<img class="center-img" src="004/08.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<p class="text">同樣是安平排隊老店，經常中午過後就賣完了，不想錯過不妨當早餐吃～餐點都不貴，招牌魚皮湯一碗70元。<br><br>
+		魚皮超多又大塊，上頭還有不少魚肉，沾哇沙米醬油超涮嘴；魚湯添加不少薑絲，喝起來鮮甜美味，真的很讚呢！</p>
+		<p class="text3">地址：台南市安平區安平路612號<br>
+		營業時間：04:00–14:00 (周一至周五)；04:00-15:00 (周六日)</p>
+
+		<p class="text2">3. 阿財牛肉湯</p>
+		<img class="center-img" src="004/09.jpg" width="1000" height="1200" alt="國華街景3" /> 
+		<img class="center-img" src="004/10.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<p class="text">牛肉湯名店再一發，愛吃牛肉的朋友來台南真的是太幸福了。大碗牛肉湯160元，還附贈一碗肉燥飯能吃很飽。<br><br>
+		牛肉份量十足、呈現粉紅色好誘人，吃起來也很嫩口；湯頭超鮮甜，波比覺得更勝文章牛肉湯，一下就喝光啦～</p>
+		<p class="text3">地址：台南市安平區古堡街5號<br>
+		營業時間：12:00–21:00 (周三公休)</p>
+
+		<p class="text2">4. 周氏蝦捲</p>
+		<img class="center-img" src="004/11.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<img class="center-img" src="004/12.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<p class="text">超過30年歷史的蝦捲老店，主打以新鮮蝦仁製成。雖是老店，但環境明亮舒適，就是服務態度較冷淡一點…<br><br>
+		蝦捲兩條75元，好貴啊！外皮炸得很酥脆，裡面吃得到真實的蝦肉塊，芹菜味明顯，蘸上甜辣醬還挺涮嘴的囉。</p>
+		<p class="text3">地址：台南市安平區安平路405-1號<br>
+		營業時間：10:00–21:30</p>
+
+		<p class="text2">5. 同記安平豆花</p>
+		<img class="center-img" src="004/13.jpg" width="1000" height="1200" alt="國華街景3" /> 
+		<img class="center-img" src="004/14.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<p class="text">從挑擔叫賣開始，同記豆花已經在安平飄香50年，曾被多家國內外媒體報導，連CNN也推薦的府城必吃美食。<br><br>
+		豆花綿密細嫩豆味十足，珍珠份量給的非常多；古早味糖水，帶有一種微微的焦香，雖然很甜但是很好喝喔！</p>
+		<p class="text3">地址：台南市安平區安北路433號<br>
+		營業時間：09:00–23:00 (周一至周日)</p>
+	</div>
+    
+	<footer class="site-footer">
+		<div class="footer-content">
+			<p>© 2026 味遊台南 版權所有 | 聯絡我們：service@stust.edu.tw <br>
+			作者：4B3F0001 王凱均　4B3F0056 張馨</p>
+		</div>
+	</footer>
+</body>
+</html>

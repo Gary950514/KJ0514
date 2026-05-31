@@ -1,0 +1,164 @@
+/* 基礎設定與配色變數 */
+:root {
+    --bg-beige: #F4F0EA;       /* 溫潤米色（大背景） */
+    --card-beige: #EFEAE2;     /* 稍深的米色（表單區塊） */
+    --dark-green: #3A4D39;     /* 低飽和墨綠（左側主色調、按鈕） */
+    --dark-green-hover: #2C3A2B;
+    --brown-text: #4A3E3D;     /* 沉穩深棕（主要文字、邊框） */
+    --brick-red: #8C4A43;      /* 低飽和磚紅（標題、重點強調） */
+    --light-brown: #A89A93;    /* 淺棕色（輸入框邊框） */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Georgia", "Noto Serif TC", "PingFang TC", serif;
+    background-color: var(--bg-beige);
+    color: var(--brown-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* 聯絡我們主容器 */
+.contact-container {
+    display: flex;
+    max-width: 960px;
+    width: 100%;
+    background-color: var(--card-beige);
+    border: 1px solid var(--light-brown);
+    box-shadow: 0 12px 28px rgba(74, 62, 61, 0.15);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* 左側：資訊欄（墨綠色系） */
+.contact-info {
+    flex: 1;
+    background-color: var(--dark-green);
+    color: var(--bg-beige);
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact-info h2 {
+    font-size: 2rem;
+    color: var(--bg-beige);
+    margin-bottom: 5px;
+    letter-spacing: 2px;
+    border-bottom: 2px solid var(--brick-red);
+    padding-bottom: 15px;
+    display: inline-block;
+}
+
+.contact-info .subtitle {
+    font-size: 1rem;
+    color: var(--light-brown);
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.contact-info .description {
+    font-size: 0.95rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    text-align: justify;
+}
+
+.info-meta .info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.info-meta .icon {
+    margin-right: 15px;
+    font-size: 1.2rem;
+    color: var(--light-brown);
+}
+
+/* 右側：表單欄 */
+.contact-form-container {
+    flex: 1.2;
+    padding: 50px;
+    background-color: var(--card-beige);
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: var(--brown-text);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--light-brown);
+    background-color: var(--bg-beige);
+    color: var(--brown-text);
+    font-family: inherit;
+    font-size: 0.95rem;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Focus 狀態呈現磚紅色微光 */
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--brick-red);
+    box-shadow: 0 0 5px rgba(140, 74, 67, 0.3);
+}
+
+/* 提交按鈕（磚紅與墨綠的沉穩搭配） */
+.submit-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 14px;
+    background-color: var(--brick-red);
+    color: var(--bg-beige);
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.submit-btn:hover {
+    background-color: var(--brown-text);
+}
+
+.submit-btn:active {
+    transform: scale(0.99);
+}
+
+/* RWD 響應式設計：手機版面自動轉為單欄 */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+    }
+    .contact-info, 
+    .contact-form-container {
+        padding: 35px 25px;
+    }
+}

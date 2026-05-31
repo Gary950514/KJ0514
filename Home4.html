@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聯絡我們 | 味遊台南</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+
+    <style type="text/css">
+/* ==========================================================================
+   1. 基礎設定與配色變數
+   ========================================================================== */
+:root {
+    --bg-beige: #F4F0EA;       /* 溫潤米色（大背景） */
+    --card-beige: #EFEAE2;     /* 稍深的米色（表單區塊） */
+    --dark-green: #3A4D39;     /* 低飽和墨綠（左側主色調、按鈕） */
+    --dark-green-hover: #2C3A2B;
+    --brown-text: #4A3E3D;     /* 沉穩深棕（主要文字、邊框） */
+    --brick-red: #8C4A43;      /* 低飽和磚紅（標題、重點強調） */
+    --light-brown: #A89A93;    /* 淺棕色（輸入框邊框） */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Georgia", "Noto Serif TC", "PingFang TC", serif;
+    background-color: var(--bg-beige);
+    color: var(--brown-text);
+    display: flex;
+    flex-direction: column; /* 讓 header、內容、footer 由上至下排列 */
+    align-items: center;
+    min-height: 100vh; /* 確保內容少時，頁尾也能釘在底部 */
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   2. 頂部導覽列樣式 (味遊台南) - 全版本通用設定
+   ========================================================================== */
+.ccc {
+    background-color: #DAC7A2;
+    padding: 0.8rem 2rem;       /* 縮小上下內距，與其他頁面完全同步 */
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.logo-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-img {
+    height: 55px;              /* 圖片高度控制在 55px，與其他頁同步 */
+    width: auto;
+    display: block;
+}
+
+.logo-text {
+    font-family: 'Noto Serif TC', Cambria, "Times New Roman", serif;
+    font-size: 22pt;           /* 字體大小同步 */
+    font-weight: bold;
+    color: #3A2E2B;            /* 改為一致的深焙咖啡色，質感更統一 */
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 0px #fff, 2px 2px 0px #D4A373; /* 復古雙層陰影 */
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.bbb {
+    text-decoration: none;
+    color: #4A3E3D;            /* 優雅的深焙咖啡色 */
+    padding-bottom: 6px; 
+    font-family: 'Noto Serif TC', "PingFang TC", "Microsoft JhengHei", serif;
+    font-size: 12pt;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    border-bottom: 2px solid transparent;
+}
+
+.bbb:hover, .bbb.current {
+    color: #A94442;            /* 懸停與啟用時變磚紅 */
+    border-bottom: 2px solid #A94442; 
+}
+
+/* 評論膠囊按鈕 */
+.fff.red-btn {
+    background-color: #A64438;
+    font-size: 11pt;
+    color: #ffffff !important;     
+    padding: 8px 20px;          
+    border-radius: 30px;            
+    font-weight: bold;           
+    text-decoration: none;       
+    display: inline-block;       
+    box-shadow: 0 4px 10px rgba(166, 68, 56, 0.2);
+    transition: all 0.2s ease;
+}
+
+.fff.red-btn:hover {
+    background-color: #8C352B;
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   3. 聯絡我們主版面佈局
+   ========================================================================== */
+/* 聯絡我們主容器 */
+.contact-container {
+    display: flex;
+    max-width: 960px;
+    width: 100%;
+    background-color: var(--card-beige);
+    border: 1px solid var(--light-brown);
+    box-shadow: 0 12px 28px rgba(74, 62, 61, 0.15);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 40px 20px; /* 增加上下邊距，不緊貼導覽列 */
+}
+
+/* 左側：資訊欄（墨綠色系） */
+.contact-info {
+    flex: 1;
+    background-color: var(--dark-green);
+    color: var(--bg-beige);
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact-info h2 {
+    font-size: 2rem;
+    color: var(--bg-beige);
+    margin-bottom: 5px;
+    letter-spacing: 2px;
+    border-bottom: 2px solid var(--brick-red);
+    padding-bottom: 15px;
+    display: inline-block;
+}
+
+.contact-info .subtitle {
+    font-size: 1rem;
+    color: var(--light-brown);
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.contact-info .description {
+    font-size: 0.95rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    text-align: justify;
+}
+
+.info-meta .info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.info-meta .icon {
+    margin-right: 15px;
+    font-size: 1.2rem;
+    color: var(--light-brown);
+}
+
+/* 右側：表單欄 */
+.contact-form-container {
+    flex: 1.2;
+    padding: 50px;
+    background-color: var(--card-beige);
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: var(--brown-text);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--light-brown);
+    background-color: var(--bg-beige);
+    color: var(--brown-text);
+    font-family: inherit;
+    font-size: 0.95rem;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--brick-red);
+    box-shadow: 0 0 5px rgba(140, 74, 67, 0.3);
+}
+
+/* 提交按鈕（已優化按鈕邊框與字體對齊） */
+.submit-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 14px;
+    background-color: var(--brick-red);
+    color: var(--bg-beige);
+    border: none;              /* 移除瀏覽器預設黑邊框 */
+    outline: none;             /* 移除點擊時的藍色外框 */
+    font-family: inherit;      /* 繼承主字體設定 */
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 2px;
+    text-align: center;        /* 確保文字置中 */
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.submit-btn:hover {
+    background-color: var(--brown-text);
+}
+
+.submit-btn:active {
+    transform: scale(0.99);
+}
+
+/* ==========================================================================
+   4. 頁尾優化（全新移入樣式）
+   ========================================================================== */
+.site-footer {
+    background-color: #2A362D; /* 深墨綠色結尾 */
+    color: #E6E1D6;            
+    width: 100%;
+    margin-top: auto;          
+}
+.footer-content {
+    max-width: 1200px;         
+    margin: 0 auto;            
+    padding: 25px 20px;        
+    text-align: center;        
+    font-size: 11pt;           
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   5. RWD 響應式設計
+   ========================================================================== */
+@media (max-width: 768px) {
+    .ccc {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+    .contact-container {
+        flex-direction: column;
+        margin: 20px 10px;
+    }
+    .contact-info, 
+    .contact-form-container {
+        padding: 35px 25px;
+    }
+    .logo-img {
+        height: 35px;
+    }
+    .logo-text {
+        font-size: 16pt;
+        letter-spacing: 1px;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <header class="ccc">
+        <div class="logo-box">
+            <img src="Home Logo.png" alt="LOGO" class="logo-img">
+            <span class="logo-text">味遊台南</span>
+        </div>
+        <nav class="nav-links">
+			<a href="index.html" class="bbb">首頁</a>
+			<a href="Home3.html" class="bbb">新聞</a>
+			<a href="show_post.html" class="bbb">評論區</a>
+		    <a href="Home4.html" class="bbb current">聯絡我們</a>
+			<a href="home2.html" class="bbb">關於我們</a>
+			<a href="post.html" class="fff red-btn">評論</a>
+        </nav>
+    </header>
+
+    <div class="contact-container">
+        <div class="contact-info">
+            <h2>聯絡我們</h2>
+            <p class="subtitle">與歷史對話，留下您的訊息</p>
+            <p class="description">
+                歲月如梭，沉澱下來的是故事與智慧。無論您是有任何合作提案、史料諮詢，或是單純想與我們交流，都歡迎透過右側表單或以下聯絡方式與我們取得聯繫。
+            </p>
+            
+            <div class="info-meta">
+                <div class="info-item">
+                    <span class="icon">📍</span>
+                    <span>臺南市永康區南台街1號</span>
+                </div>
+                <div class="info-item">
+                    <span class="icon">📞</span>
+                    <span>(06) 123-4567</span>
+                </div>
+                <div class="info-item">
+                    <span class="icon">✉️</span>
+                    <span>service@stust.edu.tw</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-form-container">
+            <form class="contact-form" action="Home4.1.html" method="GET">
+                <div class="form-group">
+                    <label for="name">您的姓名</label>
+                    <input type="text" id="name" name="name" placeholder="例如：王先生" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">電子郵件</label>
+                    <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">主旨</label>
+                    <input type="text" id="subject" name="subject" placeholder="請輸入訊息主題">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">訊息內容</label>
+                    <textarea id="message" name="message" rows="5" placeholder="請留下您寶貴的意見..." required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">傳送訊息</button>
+            </form>
+        </div>
+    </div> <footer class="site-footer">
+        <div class="footer-content">
+            <p>© 2026 味遊台南 版權所有 | 聯絡我們：service@stust.edu.tw <br>
+            作者：4B3F0001 王凱均　4B3F0056 張馨</p>
+        </div>
+    </footer>
+
+</body>
+</html>

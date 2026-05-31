@@ -1,0 +1,282 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>味遊台南 - 國華街美食</title>
+    <!-- 補上全站字體引用連結 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+<style type="text/css">
+    /* ==========================================
+       【全域樣式：純色低飽和溫潤背景】
+       ========================================== */
+    body {
+        background-color: #F4F1EA; /* 溫潤米色基底，柔和不刺眼 */
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        font-family: "Georgia", "Noto Serif TC", "PingFang TC", "Microsoft JhengHei", serif; /* 整合全站主字體 */
+    }
+
+    /* 主體內容容器：沉穩質感的白幅區塊 */
+    .main-wrapper {
+        max-width: 1100px;
+        width: 90%;
+        margin: 40px auto;
+        background-color: #FFFFFF; /* 純白區塊，讓歷史色系與照片更突出 */
+        box-shadow: 0 10px 30px rgba(92, 75, 65, 0.05); /* 帶有微弱棕色調的柔和陰影 */
+        border-radius: 8px;
+        padding: 60px 40px;
+        box-sizing: border-box;
+    }
+
+    /* ==========================================
+       【導覽列】低飽和溫潤配色（與上一頁一模一樣）
+       ========================================== */
+	.aaa {
+		background-color: #DAC7A2;
+		padding: 0.8rem 2rem;
+		display: flex !important;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0;
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 25px;                      /* 自動生成 25px 完美按鈕間距，拋棄 nbsp */
+    }
+
+	/* --- 導覽列按鈕字體優化 --- */
+	.bbb {
+		text-decoration: none;
+		color: #4A3E3D;              /* 改為優雅的深焙咖啡色，與 LOGO 字體呼應，辨識度更高 */
+		padding-bottom: 6px; 
+		font-family: 'Noto Serif TC', "PingFang TC", "Microsoft JhengHei", serif; /* 優先使用襯線體，帶有文青感 */
+		font-size: 12pt;             /* 微調字體大小，看起來更精緻 */
+		font-weight: 600;            /* 半粗體，讓字體清晰 */
+		letter-spacing: 1.5px;       /* 稍微拉開字距，營造現代呼吸感 */
+		transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); /* 讓滑鼠懸停動畫更柔順 */
+		border-bottom: 2px solid transparent;
+	}
+
+	/* 滑鼠移上去的狀態 */
+	.bbb:hover {
+		color: #A94442;              /* 懸停時變成你設定的「安平磚紅」變數顏色 */
+		border-bottom: 2px solid #A94442; 
+	}
+
+	/* 目前所在頁面的狀態（例如：關於我們） */
+	.bbb.current {
+		color: #A94442;              /* 啟用狀態同樣使用安平磚紅 */
+		border-bottom: 2px solid #A94442; /* 下底線與文字同色 */
+		font-weight: bold;
+	}
+    .bbb:active {
+        border-bottom: 2px solid #75332B; 
+        color: #75332B;
+    }
+
+    /* 評論膠囊按鈕 */
+    .fff.red-btn {
+        background-color: #9E4A3F; /* 古典磚紅 */
+        font-size: 11pt;
+        color: #ffffff !important;     
+        padding: 8px 22px;          
+        border-radius: 30px;            
+        font-weight: bold;           
+        text-decoration: none;       
+        display: inline-block;       
+        box-shadow: 0 4px 10px rgba(158, 74, 63, 0.15);
+        transition: all 0.2s ease;
+    }
+
+    .fff.red-btn:hover {
+        background-color: #75332B; /* 懸停變深磚紅 */
+        transform: translateY(-1px);
+    }
+
+    /* ==========================================
+       【內文與圖片樣式：完美套用歷史沉穩感】
+       ========================================== */
+    .container {
+        color: #2A362D; /* 深墨綠色，展現古磚苔痕的歷史感 */
+        width: 100%;
+        margin: 0 auto 40px auto;           
+        box-sizing: border-box;
+        font-size: 22pt;
+        font-weight: bold;
+        text-align: center;
+        line-height: 1.5;
+    }
+
+    .center-img {
+        display: block;    
+        margin: 35px auto; 
+        max-width: 100%;   
+        height: auto;      
+        border-radius: 4px;
+    }
+
+    .text {
+        width: 100%;
+        margin: 25px auto;        
+        padding: 0 40px; 
+        box-sizing: border-box;
+        font-size: 13pt;
+        line-height: 1.8; /* 舒適的行高 */
+        text-align: left;       
+        display: block;
+        color: #4A4A4A; /* 深灰內文 */
+    }
+
+    /* 特色標題區塊 */
+	.text-bg {
+        color: #2A362D;           /* 深墨綠字 */
+        background-color: #E2DDD5; /* 低飽和溫潤米灰 */
+        padding: 15px 25px;
+        border-radius: 4px;        
+        font-size: 16pt;
+        display: block;            
+        text-align: left;          /* 文字靠左對齊 */
+        font-weight: bold;
+        border-left: 12px solid #9E4A3F; /* 左邊粗邊框（古典磚紅） */
+        height: auto;      
+        width: 100%;
+        max-width: 1000px;          
+        margin: 40px auto 20px auto; /* 區塊置中 */
+        box-sizing: border-box;
+    }
+
+	.text2{
+		color: #2A362D;           /* 深墨綠字 */
+		padding: 15px 25px;
+		border-radius: 4px;
+		font-size: 16pt;
+		display: block;
+		text-align: left;          
+		font-weight: bold;
+		border-left: 12px solid #C5896F; /* 左邊粗邊框 */
+		height: auto;
+		width: 100%;
+		max-width: 1000px;          
+		margin: 40px auto 20px auto; 
+		box-sizing: border-box;
+		background-color: #F4EBE1;
+    }
+	
+	.text3{
+        color: #2A362D;             /* 深墨綠字 */
+        font-size: 16pt;            
+        font-weight: bold;
+        text-align: left;           
+        border-left: 8px solid #E3519E ; /* 左側裝飾線 */
+        padding-left: 15px;         
+        margin: 45px auto 20px auto;
+        width: 100%;
+        max-width: 970px;           
+        box-sizing: border-box;
+        line-height: 1.4;
+    }
+
+	.logo-box {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+
+	.logo-img {
+		height: 55px;              
+		width: auto;               
+		max-height: 100%;          
+	}
+
+	.logo-text {
+		font-family: 'Noto Serif TC', Cambria, "Times New Roman", serif; 
+		font-size: 22pt;       
+		font-weight: 700;      
+		color: #3A2E2B;        
+		letter-spacing: 4px;   
+		text-shadow: 1px 1px 0px #fff, 2px 2px 0px #D4A373; 
+	}
+
+	/* --- 頁尾優化 (已成功同步字體風格) --- */
+	.site-footer {
+		background-color: #2A362D; /* 深墨綠色結尾 */
+		color: #E6E1D6;            
+		width: 100%;
+		margin-top: auto;          
+		font-family: "Georgia", "Noto Serif TC", "PingFang TC", serif; /* 同步襯線字型組合 */
+	}
+
+	.footer-content {
+		max-width: 1200px;         
+		margin: 0 auto;            
+		padding: 25px 20px;        
+		text-align: center;        
+		font-size: 11pt;           
+		line-height: 1.6;
+	}
+
+</style>
+</head>
+
+<body>
+    
+	<header class="aaa">
+		<div class="logo-box">
+			<img src="Home Logo.png" alt="LOGO" class="logo-img">
+			<span class="logo-text">味遊台南</span>
+		</div>
+		<nav class="nav-links">
+			<a href="index.html" class="bbb">首頁</a>
+			<a href="Home3.html" class="bbb">新聞</a>
+			<a href="show_post.html" class="bbb">評論區</a>
+		    <a href="Home4.html" class="bbb">聯絡我們</a>
+			<a href="home2.html" class="bbb">關於我們</a>
+			<a href="post.html" class="fff red-btn">評論</a>
+		</nav>
+	</header>
+
+	<!-- 主體白色襯底包覆區塊 -->
+	<div class="main-wrapper">
+		<p class="container">台南赤崁樓新美街裡的巷弄咖啡館，最美老屋早午餐！不斷回訪總是滿滿驚喜</p>
+		<img class="center-img" src="009/01.jpg" width="1000" height="1200" alt="國華街美食1" />
+	  <p class="text">台南｜kokoni cafe</p>
+		<img class="center-img" src="009/02.jpg" width="1000" height="1200" alt="國華街美食1" />
+				<p class="text">台南｜kokoni cafe<br>
+kokoni cafe 就在 Nani麵 旁的巷子裡，是我們這幾年回台南玩最常回訪的咖啡店，位置就在 台南中西區 熱鬧的 赤崁樓 赤崁商圈 新美街 巷子旁，kokoni cafe 不只有烏龍麵、蓋飯等日韓鹹食料理，還有少見的半月燒、鬆餅等甜點，不管是想吃早午餐、午餐或者下午茶咖啡時光，台南老屋咖啡館 kokoni cafe 都是一個很棒的選擇！<br><br>
+
+大概六七年前就一吃成主顧，這幾年已無數次Ｎ訪我們的愛店 kokoni cafe（之前森山市集我們也會專程去找他們），隔一陣子來總會有驚喜！草莓季、芒果季，甚至之前還有滿滿香菜的香菜咖哩飯，新鮮感十足且道道令人驚艷，去年因為疫情火紅到 IG 滿滿都是的半月燒禮盒，也是他們家的！kokoni cafe 的半月燒和阿嬤の甜粿鬆餅，已是我們近幾次回訪的必點選擇，吃過就愛上～～～回到台中還會想念的那種</p><br>
+		<img class="center-img" src="009/03.jpg" width="1000" height="1200" alt="國華街美食1" />
+		<img class="center-img" src="009/04.jpg" width="1000" height="1200" alt="國華街美食1" />
+		
+		<p class="text">不知不覺已無數次Ｎ訪的 kokoni cafe，我們應該也算是看著它長大了吧！<br><br>
+
+說真的在這個什麼都很快、餐廳開的快也收的快的時代，一間店如果沒有一定的水準，有時候要撐過一年都不容易。而這間台南老屋咖啡店 kokoni cafe 早在很多人心裡打上了「必訪」的勾勾，而我們更是將它收進了常訪口袋裡，在這裡吃過的料理、甜點已無法輕鬆，而這次來是在 Nani麵 飽食沾麵後來吃甜點，喝杯冰涼的飲料放鬆放鬆。<br><br>
+
+如果你（妳）需要台南美食必吃名單，相信我 Nani麵 和 kokoni cafe 絕對可以一次排進行程裡！兩間之間走路大概１分鐘，兩間老屋一次收藏美翻了～</p><br>
+		<img class="center-img" src="009/05.jpg" width="1000" height="1200" alt="國華街美食1" />
+		<img class="center-img" src="009/06.jpg" width="1000" height="1200" alt="國華街美食1" />
+				<img class="center-img" src="009/07.jpg" width="1000" height="1200" alt="國華街美食1" />
+		<p class="text">雖然已來過好幾回，來到像是走自己家廚房的熟悉，但每每來還是會這老房子吸引，看著它在時間的累積下，漸漸有了另一種味道，再翻閱過去第一次來的照片，便能知道有些東西是再怎麼營造都無法營造出來的，譬如「生活感」，這幾年 kokoni cafe 多了更多的生活感，就像是老夫老妻因為柴米油鹽醬醋茶堆疊出的情感，無法頂替也沒人可以頂替。
+
+			<img class="center-img" src="009/08.jpg" width="1000" height="1200" alt="國華街美食1" />
+		<img class="center-img" src="009/09.jpg" width="1000" height="1200" alt="國華街美食1" />
+				<img class="center-img" src="009/10.jpg" width="1000" height="1200" alt="國華街美食1" />
+
+	
+	
+	</div>
+    
+	<footer class="site-footer">
+		<div class="footer-content">
+			<p>© 2026 味遊台南 版權所有 | 聯絡我們：service@stust.edu.tw <br>
+			作者：4B3F0001 王凱均　4B3F0056 張馨</p>
+		</div>
+	</footer>
+</body>
+</html>

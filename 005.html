@@ -1,0 +1,328 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>味遊台南 - 國華街美食</title>
+    <!-- 補上全站字體引用連結 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+<style type="text/css">
+    /* ==========================================
+       【全域樣式：純色低飽和溫潤背景】
+       ========================================== */
+    body {
+        background-color: #F4F1EA; /* 溫潤米色基底，柔和不刺眼 */
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        font-family: "Georgia", "Noto Serif TC", "PingFang TC", "Microsoft JhengHei", serif; /* 整合全站主字體 */
+    }
+
+    /* 主體內容容器：沉穩質感的白幅區塊 */
+    .main-wrapper {
+        max-width: 1100px;
+        width: 90%;
+        margin: 40px auto;
+        background-color: #FFFFFF; /* 純白區塊，讓歷史色系與照片更突出 */
+        box-shadow: 0 10px 30px rgba(92, 75, 65, 0.05); /* 帶有微弱棕色調的柔和陰影 */
+        border-radius: 8px;
+        padding: 60px 40px;
+        box-sizing: border-box;
+    }
+
+    /* ==========================================
+       【導覽列】低飽和溫潤配色（與上一頁一模一樣）
+       ========================================== */
+	.aaa {
+		background-color: #DAC7A2;
+		padding: 0.8rem 2rem;
+		display: flex !important;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0;
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 25px;                      /* 自動生成 25px 完美按鈕間距，拋棄 nbsp */
+    }
+
+	/* --- 導覽列按鈕字體優化 --- */
+	.bbb {
+		text-decoration: none;
+		color: #4A3E3D;              /* 改為優雅的深焙咖啡色，與 LOGO 字體呼應，辨識度更高 */
+		padding-bottom: 6px; 
+		font-family: 'Noto Serif TC', "PingFang TC", "Microsoft JhengHei", serif; /* 優先使用襯線體，帶有文青感 */
+		font-size: 12pt;             /* 微調字體大小，看起來更精緻 */
+		font-weight: 600;            /* 半粗體，讓字體清晰 */
+		letter-spacing: 1.5px;       /* 稍微拉開字距，營造現代呼吸感 */
+		transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); /* 讓滑鼠懸停動畫更柔順 */
+		border-bottom: 2px solid transparent;
+	}
+
+	/* 滑鼠移上去的狀態 */
+	.bbb:hover {
+		color: #A94442;              /* 懸停時變成你設定的「安平磚紅」變數顏色 */
+		border-bottom: 2px solid #A94442; 
+	}
+
+	/* 目前所在頁面的狀態（例如：關於我們） */
+	.bbb.current {
+		color: #A94442;              /* 啟用狀態同樣使用安平磚紅 */
+		border-bottom: 2px solid #A94442; /* 下底線與文字同色 */
+		font-weight: bold;
+	}
+    .bbb:active {
+        border-bottom: 2px solid #75332B; 
+        color: #75332B;
+    }
+
+    /* 評論膠囊按鈕 */
+    .fff.red-btn {
+        background-color: #9E4A3F; /* 古典磚紅 */
+        font-size: 11pt;
+        color: #ffffff !important;     
+        padding: 8px 22px;          
+        border-radius: 30px;            
+        font-weight: bold;           
+        text-decoration: none;       
+        display: inline-block;       
+        box-shadow: 0 4px 10px rgba(158, 74, 63, 0.15);
+        transition: all 0.2s ease;
+    }
+
+    .fff.red-btn:hover {
+        background-color: #75332B; /* 懸停變深磚紅 */
+        transform: translateY(-1px);
+    }
+
+    /* ==========================================
+       【內文與圖片樣式：完美套用歷史沉穩感】
+       ========================================== */
+    .container {
+        color: #2A362D; /* 深墨綠色，展現古磚苔痕的歷史感 */
+        width: 100%;
+        margin: 0 auto 40px auto;           
+        box-sizing: border-box;
+        font-size: 22pt;
+        font-weight: bold;
+        text-align: center;
+        line-height: 1.5;
+    }
+
+    .center-img {
+        display: block;    
+        margin: 35px auto; 
+        max-width: 100%;   
+        height: auto;      
+        border-radius: 4px;
+    }
+
+    .text {
+        width: 100%;
+        margin: 25px auto;        
+        padding: 0 40px; 
+        box-sizing: border-box;
+        font-size: 13pt;
+        line-height: 1.8; /* 舒適的行高 */
+        text-align: center;       
+        display: block;
+        color: #4A4A4A; /* 深灰內文 */
+    }
+
+    /* 特色標題區塊 */
+	.text-bg {
+        color: #2A362D;           /* 深墨綠字 */
+        background-color: #E2DDD5; /* 低飽和溫潤米灰 */
+        padding: 15px 25px;
+        border-radius: 4px;        
+        font-size: 16pt;
+        display: block;            
+        text-align: left;          /* 文字靠左對齊 */
+        font-weight: bold;
+        border-left: 12px solid #9E4A3F; /* 左邊粗邊框（古典磚紅） */
+        height: auto;      
+        width: 100%;
+        max-width: 1000px;          
+        margin: 40px auto 20px auto; /* 區塊置中 */
+        box-sizing: border-box;
+    }
+
+	.text2{
+		color: #2A362D;           /* 深墨綠字 */
+		padding: 15px 25px;
+		border-radius: 4px;
+		font-size: 16pt;
+		display: block;
+		text-align: left;          
+		font-weight: bold;
+		border-left: 12px solid #C5896F; /* 左邊粗邊框 */
+		height: auto;
+		width: 100%;
+		max-width: 1000px;          
+		margin: 40px auto 20px auto; 
+		box-sizing: border-box;
+		background-color: #F4EBE1;
+    }
+	
+	.text3{
+        color: #2A362D;             /* 深墨綠字 */
+        font-size: 16pt;            
+        font-weight: bold;
+        text-align: left;           
+        border-left: 8px solid #E3519E ; /* 左側裝飾線 */
+        padding-left: 15px;         
+        margin: 45px auto 20px auto;
+        width: 100%;
+        max-width: 970px;           
+        box-sizing: border-box;
+        line-height: 1.4;
+    }
+
+	.logo-box {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+
+	.logo-img {
+		height: 55px;              
+		width: auto;               
+		max-height: 100%;          
+	}
+
+	.logo-text {
+		font-family: 'Noto Serif TC', Cambria, "Times New Roman", serif; 
+		font-size: 22pt;       
+		font-weight: 700;      
+		color: #3A2E2B;        
+		letter-spacing: 4px;   
+		text-shadow: 1px 1px 0px #fff, 2px 2px 0px #D4A373; 
+	}
+
+	/* --- 頁尾優化 (已成功同步字體風格) --- */
+	.site-footer {
+		background-color: #2A362D; /* 深墨綠色結尾 */
+		color: #E6E1D6;            
+		width: 100%;
+		margin-top: auto;          
+		font-family: "Georgia", "Noto Serif TC", "PingFang TC", serif; /* 同步襯線字型組合 */
+	}
+
+	.footer-content {
+		max-width: 1200px;         
+		margin: 0 auto;            
+		padding: 25px 20px;        
+		text-align: center;        
+		font-size: 11pt;           
+		line-height: 1.6;
+	}
+
+</style>
+</head>
+
+<body>
+    
+	<header class="aaa">
+		<div class="logo-box">
+			<img src="Home Logo.png" alt="LOGO" class="logo-img">
+			<span class="logo-text">味遊台南</span>
+		</div>
+		<nav class="nav-links">
+			<a href="index.html" class="bbb">首頁</a>
+			<a href="Home3.html" class="bbb">新聞</a>
+			<a href="show_post.html" class="bbb">評論區</a>
+		    <a href="Home4.html" class="bbb">聯絡我們</a>
+			<a href="home2.html" class="bbb">關於我們</a>
+			<a href="post.html" class="fff red-btn">評論</a>
+		</nav>
+	</header>
+
+	<!-- 主體白色襯底包覆區塊 -->
+	<div class="main-wrapper">
+		<p class="container">【2026大稻埕美食推薦】迪化街.永樂市場必吃熱門小吃～老字號和菓子、百年油飯、五郎套餐推薦～</p>
+		<img class="center-img" src="005/01.jpg" width="1000" height="1200" alt="國華街美食1" />
+		
+		<p class="text-bg">永樂市場 停車</p>
+
+		<img class="center-img" src="005/02.jpg" width="1000" height="1200" alt="國華街交通" />
+		<p class="text">永樂市場，從北門捷運站走過來約十分鐘，算是逛大稻埕的起點。<br><br>停車｜可以停永樂市場地下停車場或是大稻埕公園地下停車場。</p>
+		
+		<p class="text-bg">大稻埕美食清單</p>
+		<img class="center-img" src="005/03.jpg" width="1000" height="1200" alt="國華街美食2" />
+		<img class="center-img" src="005/04.jpg" width="1000" height="1200" alt="鼎富發1" />
+		<img class="center-img" src="005/05.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<p class="text">【魷布院鮮烤魷魚】太香太犯規啦！昨天去大稻埕本來只是想買雞捲，結果走到迪化街突然聞到一股焦香味，超香，整個人被味道拉走～一看，居然一堆人在排隊，我也立刻加入行列！這家叫「魷布院」，賣現烤魷魚，真的超誇張好吃！魷魚Q彈不會硬，重點是完全不腥，大人小孩都能吃，連牙齒敏感的也可以放心咬下去那種～拿回家邊追劇邊吃，一口接一口根本停不下來，超級涮嘴！想找迪化街的隱藏版美食？這攤一定要試試，當下酒菜、追劇零嘴、送人當伴手禮都超可以！</p><br>
+
+		
+		<p class="text3">店名：魷布院鮮烤魷魚144號攤<br>
+		地址：台北市大同區迪化街一段144號<br>
+		營業時間：星期六日 國定假日11:30-18:00<br>
+		官方LINE：@547nodms<br><br>
+		店名：魷布院鮮烤魷魚26號攤<br>
+		地址：台北市大同區迪化街一段26號<br>
+		營業時間：11:30-18:00<br>
+		IG：魷布院鮮烤魷魚迪化創始店</p>
+
+		<p class="text2">迪化街美食：永樂車輪餅</p>
+
+		<img class="center-img" src="005/06.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<p class="text">迪化街「永樂車輪餅」大稻埕必吃！紫心地瓜爆餡車輪餅</p>
+
+		<img class="center-img" src="004/07.jpg" width="1000" height="1200" alt="國華街景3" /> 
+		<p class="text">走進大稻埕的永樂車輪餅，就能看到麵糊在鐵板上滋滋作響，<br><br>
+		搭配用心填滿的餡料，現場香氣鋪鼻，吸引無數饕客和遊客前來打卡。<br><br>
+		特別推薦的紫心地瓜口味，顏色夢幻又帶地瓜的天然纖維口感，滿滿一口滿足！<br><br>
+		此外，奶油內餡更是亮點，加入微微柳橙皮增添層次，香甜不膩口，讓人一試成主顧！</p>
+		
+		<img class="center-img" src="005/08.jpg" width="1000" height="1200" alt="國華街景3" />    
+		<p class="text">還有芋頭和花生口味也令人驚喜，完全不同於一般店家的鮮奶油混合餡，<br><br>
+		這裡用的是純正芋泥和花生泥，香氣濃郁、口感紮實，彷彿在吃整顆芋頭和花生。<br><br>
+		雖然價格稍高，但滿滿的真材實料，絕對值得一試！</p>
+		
+		<img class="center-img" src="005/09.jpg" width="1000" height="1200" alt="國華街景3" />    
+
+		<p class="text3">餐廳名稱：永樂車輪餅<br>
+		地址：103台北市大同區迪化街一段146號騎樓<br>
+		營業時間：11:30～18:00（星期二休息）<br>
+		口味：蘿蔔絲、香橙奶油、大紅豆、紫心地瓜、抹茶（均一價20元）<br>
+		南瓜、花生（均一價30元）</p>
+
+		<p class="text2">迪化街美食：妙口四神湯 肉包專專賣店</p>
+
+		<img class="center-img" src="005/10.jpg" width="1000" height="1200" alt="國華街景3" /> 
+		<p class="text">走進充滿年味的迪化街，還沒正式踏進年貨大街，<br><br>
+		就被這家妙口肉包專賣店吸引住了！人氣必點的手工肉包，只要 $25，<br><br>
+		就能享受鬆軟Q彈的外皮，包裹著鮮嫩多汁的豬肉餡。<br><br>
+		內餡混合洋蔥和濃郁黑胡椒香氣，鹹甜恰到好處，完全不油膩！<br><br>
+		無論當早餐還是下午點心，都是暖胃又滿足的好選擇，絕對值得一試。</p>	
+		
+		<img class="center-img" src="005/11.jpg" width="1000" height="1200" alt="國華街景3" /> 
+		<img class="center-img" src="005/12.jpg" width="1000" height="1200" alt="國華街景3" /> 
+
+		<p class="text">四神湯暖胃｜料多到湯滿溢！別錯過店內的四神湯，$70<br><br>
+		一碗幾乎全是料！蓮子、茯苓、薏仁，<br><br>
+		加上清洗得乾淨無腥的軟嫩豬腸，每一口都充滿驚喜。<br><br>
+		湯頭帶有微微中藥香和酒香，紫色湯色更是獨特又誘人。<br><br>
+		無論是在逛街中途補充能量，還是寒冬暖胃，這碗湯都是絕佳選擇！<br><br>
+		年貨大街逛累了，記得來妙口坐坐～</p>	
+		
+		<img class="center-img" src="005/13.jpg" width="1000" height="1200" alt="國華街景3" /> 
+		
+		<p class="text3">餐廳名稱：妙口四神湯.肉包專賣店<br>
+		時間：11:30-17:00（週一公休）<br>
+		電話：0970-135-007<br>
+		地址：台北市大同區民生西路388號</p>
+	</div>
+    
+	<footer class="site-footer">
+		<div class="footer-content">
+			<p>© 2026 味遊台南 版權所有 | 聯絡我們：service@stust.edu.tw <br>
+			作者：4B3F0001 王凱均　4B3F0056 張馨</p>
+		</div>
+	</footer>
+</body>
+</html>

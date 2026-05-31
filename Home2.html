@@ -1,0 +1,405 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>味遊台南 - 關於我們</title>
+	   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+<style type="text/css">
+	/* --- 味趣台南 專屬風格變數（已合併去重） --- */
+	:root {
+		--bg-color: #fbf9f5;         /* 溫暖米白背景 */
+		--primary-color: #a94442;    /* 安平磚紅 */
+		--secondary-color: #c89d55;  /* 古銅金 */
+		--text-dark: #332c25;        /* 深碳褐 */
+		--text-light: #766e65;       /* 淺褐 */
+		--card-bg: #ffffff;          /* 純白卡片 */
+		--accent-red: #A64438;        /* 古典硃砂紅 */
+		--accent-red-hover: #8C352B;  /* 按鈕懸停深紅色 */
+	}
+
+	/* --- 全局設定 --- */
+	body {
+		margin: 0;
+		padding: 0;
+		background-color: var(--bg-color);
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh; /* 確保內容少時，頁尾也能釘在底部 */
+	}
+
+	/* --- 導覽列 --- */
+	.aaa {
+		background-color: #DAC7A2;
+		padding: 0.8rem 2rem;       /* 縮小上下內距，讓導覽列高度更精緻 */
+		display: flex !important;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0;
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	/* --- 修正重點：LOGO 區塊主設定（全版本通用） --- */
+	.logo-box {
+		display: flex;
+		align-items: center;
+		gap: 12px;                 /* 圖片和文字之間的間距 */
+	}
+
+	.logo-img {
+		height: 55px;              /* 電腦版圖片高度控制在 45px（可依需求調整） */
+		width: auto;               /* 保持等比例，不變形 */
+		display: block;
+	}
+
+	.logo-text {
+		font-family: 'Noto Serif TC', Cambria, "Times New Roman", serif; /* 引入明體/襯線體 */
+		font-size: 22pt;           /* 電腦版字體大小 */
+		font-weight: bold;         /* 粗體 */
+		color: #3A2E2B;            /* 深焙咖啡色 */
+		letter-spacing: 2px;       /* 舒適的字距 */
+		text-shadow: 1px 1px 0px #fff, 2px 2px 0px #D4A373; /* 復古雙層陰影 */
+	}
+
+	.nav-links {
+		display: flex;
+		align-items: center;
+		gap: 25px;
+	}
+
+	/* --- 導覽列按鈕字體優化 --- */
+	.bbb {
+		text-decoration: none;
+		color: #4A3E3D;              /* 改為優雅的深焙咖啡色，與 LOGO 字體呼應，辨識度更高 */
+		padding-bottom: 6px; 
+		font-family: 'Noto Serif TC', "PingFang TC", "Microsoft JhengHei", serif; /* 優先使用襯線體，帶有文青感 */
+		font-size: 12pt;             /* 微調字體大小，看起來更精緻 */
+		font-weight: 600;            /* 半粗體，讓字體清晰 */
+		letter-spacing: 1.5px;       /* 稍微拉開字距，營造現代呼吸感 */
+		transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); /* 讓滑鼠懸停動畫更柔順 */
+		border-bottom: 2px solid transparent;
+	}
+
+	/* 滑鼠移上去的狀態 */
+	.bbb:hover {
+		color: #A94442;              /* 懸停時變成你設定的「安平磚紅」變數顏色 */
+		border-bottom: 2px solid #A94442; 
+	}
+
+	/* 目前所在頁面的狀態（例如：關於我們） */
+	.bbb.current {
+		color: #A94442;              /* 啟用狀態同樣使用安平磚紅 */
+		border-bottom: 2px solid #A94442; /* 下底線與文字同色 */
+		font-weight: bold;
+	}
+	/* 評論按鈕 */
+	.fff.red-btn {
+		background-color: var(--accent-red);
+		font-size: 11pt;
+		color: #ffffff !important;
+		padding: 8px 20px;
+		border-radius: 30px;
+		font-weight: bold;
+		text-decoration: none;
+		display: inline-block;
+		box-shadow: 0 4px 10px rgba(166, 68, 56, 0.2);
+		transition: all 0.2s ease;
+	}
+
+	.fff.red-btn:hover {
+		background-color: var(--accent-red-hover);
+		transform: translateY(-1px);
+	}
+
+	/* --- 主內容區 --- */
+	.about-tainan {
+		background-color: var(--bg-color);
+		color: var(--text-dark);
+		font-family: "Georgia", "Noto Serif TC", "PingFang TC", serif; /* 同步改為古典優雅的字體組合 */
+		line-height: 1.8;
+		padding-bottom: 80px;
+		flex: 1; /* 推擠頁尾關鍵 */
+	}
+
+	.about-container {
+		max-width: 1100px;
+		margin: 0 auto;
+		padding: 0 20px;
+	}
+
+	/* ==========================================
+	   【全新優化】關於我們 橫幅大圖區 (Banner)
+	   ========================================== */
+	.about-banner {
+		background: linear-gradient(rgba(42, 33, 27, 0.55), rgba(74, 59, 50, 0.7)), 
+					url('home3.jpg') center/cover no-repeat fixed;
+		height: 380px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		color: #fbf9f5;
+		margin-bottom: 60px;
+		box-shadow: inset 0 0 100px rgba(0,0,0,0.2);
+	}
+
+	/* 標題中「關於我們」字體設計 */
+	.banner-content h1 {
+		font-family: 'Noto Serif TC', Cambria, serif;
+		font-size: 3.2rem;
+		font-weight: 700;
+		letter-spacing: 10px;
+		margin-bottom: 12px;
+		color: #FFFFFF;
+		text-shadow: 2px 2px 0px rgba(74, 59, 50, 0.8), 0px 0px 20px rgba(255,255,255,0.2);
+		display: inline-block;
+		position: relative;
+	}
+
+	.banner-content h1::after {
+		content: "";
+		display: block;
+		width: 60px;
+		height: 2px;
+		background-color: var(--secondary-color);
+		margin: 12px auto 0 auto;
+	}
+
+	/* 橫幅英文字語（點綴用） */
+	.banner-content .banner-sub {
+		font-family: Cambria, Georgia, serif;
+		font-size: 1.1rem;
+		font-weight: 300;
+		letter-spacing: 4px;
+		color: #DAC7A2;
+		text-transform: uppercase;
+		opacity: 0.9;
+		margin-top: 5px;
+	}
+
+	.banner-content p {
+		font-size: 1.2rem;
+		font-weight: 300;
+		letter-spacing: 1px;
+	}
+
+	/* 2. 品牌故事區 */
+	.about-story {
+		text-align: center;
+		max-width: 800px;
+		margin: 0 auto 80px auto;
+	}
+
+	.about-story h2 {
+		font-size: 2.2rem;
+		color: var(--primary-color);
+		margin-bottom: 25px;
+		position: relative;
+		display: inline-block;
+	}
+
+	.about-story h2::after {
+		content: "";
+		display: block;
+		width: 50px;
+		height: 3px;
+		background-color: var(--secondary-color);
+		margin: 10px auto 0 auto;
+	}
+
+	.about-story p {
+		font-size: 1.1rem;
+		color: var(--text-light);
+		margin-bottom: 15px;
+	}
+
+	.about-story strong {
+		color: var(--primary-color);
+	}
+
+	/* 3. 核心價值卡片 */
+	.about-features {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 30px;
+		margin-bottom: 80px;
+	}
+
+	.feature-card {
+		background-color: var(--card-bg);
+		padding: 40px 30px;
+		border-radius: 8px;
+		text-align: center;
+		box-shadow: 0 4px 15px rgba(169, 68, 66, 0.05);
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		border-top: 4px solid var(--secondary-color);
+	}
+
+	.feature-card:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 8px 25px rgba(169, 68, 66, 0.12);
+	}
+
+	.feature-icon {
+		font-size: 2.5rem;
+		margin-bottom: 20px;
+	}
+
+	.feature-card h3 {
+		font-size: 1.4rem;
+		color: var(--primary-color);
+		margin-bottom: 15px;
+	}
+
+	.feature-card p {
+		font-size: 0.95rem;
+		color: var(--text-light);
+		text-align: justify;
+	}
+
+	/* 4. 行動呼籲 (CTA) */
+	.about-cta {
+		background-color: #fff;
+		border: 1px solid #eee;
+		border-radius: 8px;
+		padding: 50px 30px;
+		text-align: center;
+		max-width: 700px;
+		margin: 0 auto;
+	}
+
+	.about-cta h2 {
+		font-size: 1.8rem;
+		color: var(--text-dark);
+		margin-bottom: 10px;
+	}
+
+	.about-cta p {
+		color: var(--text-light);
+		margin-bottom: 25px;
+	}
+
+	.cta-btn {
+		display: inline-block;
+		background-color: var(--primary-color);
+		color: #fff;
+		padding: 12px 35px;
+		text-decoration: none;
+		border-radius: 25px;
+		font-weight: bold;
+		letter-spacing: 1px;
+		transition: background-color 0.3s ease, transform 0.2s ease;
+	}
+
+	.cta-btn:hover {
+		background-color: #8c3533;
+		transform: scale(1.05);
+	}
+
+	/* --- 頁尾優化 (已成功同步字體風格) --- */
+	.site-footer {
+		background-color: #2A362D; /* 深墨綠色結尾 */
+		color: #E6E1D6;            
+		width: 100%;
+		margin-top: auto;          
+		font-family: "Georgia", "Noto Serif TC", "PingFang TC", serif; /* 同步襯線英文字體 */
+	}
+	.footer-content {
+		max-width: 1200px;         
+		margin: 0 auto;            
+		padding: 25px 20px;        
+		text-align: center;        
+		font-size: 11pt;           
+		line-height: 1.6;
+	}
+
+	/* --- RWD 響應式手機優化 --- */
+	@media (max-width: 768px) {
+		.banner-content h1 {
+			font-size: 2.2rem;
+		}
+		.banner-content p {
+			font-size: 1rem;
+			padding: 0 15px;
+		}
+		.about-story h2 {
+			font-size: 1.8rem;
+		}
+		
+		/* 手機版適當縮小 LOGO 區塊防止過大 */
+		.logo-img {
+			height: 35px;
+		}
+		.logo-text {
+			font-size: 16pt;
+			letter-spacing: 1px;
+		}
+	}
+	</style>
+</head>
+
+<body>
+	<header class="aaa">
+		<div class="logo-box">
+			<img src="Home Logo.png" alt="LOGO" class="logo-img">
+			<span class="logo-text">味遊台南</span>
+		</div>
+		<nav class="nav-links">
+			<a href="index.html" class="bbb">首頁</a>
+			<a href="Home3.html" class="bbb">新聞</a>
+			<a href="show_post.html" class="bbb">評論區</a>
+		    <a href="Home4.html" class="bbb">聯絡我們</a>
+			<a href="home2.html" class="bbb current">關於我們</a>
+			<a href="post.html" class="fff red-btn">評論</a>
+		</nav>
+	</header>
+
+	<section class="about-tainan">
+		<div class="about-banner">
+			<div class="banner-content">
+				<h1>關於我們</h1>
+				<p class="banner-sub">About Our Tainan Story</p>
+			</div>
+		</div>
+		<div class="about-container">
+			<div class="about-story">
+				<h2>我們的故事</h2>
+				<p>台南的旅遊資訊很多，但你是否常跟著排隊名店踩雷，或總是在複製品景點打卡？</p>
+				<p>身為深深愛上這片土地的在地人，我們創立了<strong>「味趣台南」</strong>。我們不只介紹景點，更想帶你走進巷弄的老建築、品嚐沒有招牌的百年老店，體驗最純粹的台南慢步調與老靈魂。</p>
+			</div>
+
+			<div class="about-features">
+				<div class="feature-card">
+					<div class="feature-icon">🥢</div>
+					<h3>在地人帶路</h3>
+					<p>拒絕盲目跟風！所有美食與景點皆由團隊親自實地走訪，為你把關最真實的在地滋味。</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon">🧱</div>
+					<h3>深度文化</h3>
+					<p>不只拍照打卡，我們更想告訴你街角老牆、百年老店背後的人情味與歷史故事。</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon">🗺️</div>
+					<h3>主題懶人包</h3>
+					<p>無論你是文青散步、親子同遊還是老饕尋味，我們都幫你精準規劃好完美行程。</p>
+				</div>
+			</div>
+
+			<div class="about-cta">
+				<h2>想跟我們一起玩台南嗎？</h2>
+				<p>歡迎追蹤我們的社群，或點擊下方探索更多私房秘境！</p>
+				<a href="Home.php" class="cta-btn">探索私房景點</a>
+			</div>
+		</div>
+	</section> 
+
+	<footer class="site-footer">
+		<div class="footer-content">
+			<p>© 2026 味遊台南 版權所有 | 聯絡我們：service@stust.edu.tw <br>
+			作者：4B3F0001 王凱均　4B3F0056 張馨</p>
+		</div>
+	</footer>
+
+</body>
+</html>

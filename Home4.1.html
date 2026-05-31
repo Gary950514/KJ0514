@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>訊息已成功傳送 | 味遊台南</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+
+    <style type="text/css">
+/* ==========================================================================
+   1. 基礎設定與配色變數
+   ========================================================================== */
+:root {
+    --bg-beige: #F4F0EA;       /* 溫潤米色 */
+    --card-beige: #EFEAE2;     /* 稍深的米色 */
+    --dark-green: #3A4D39;     /* 低飽和墨綠 */
+    --dark-green-hover: #2C3A2B;
+    --brown-text: #4A3E3D;     /* 沉穩深棕 */
+    --brick-red: #8C4A43;      /* 低飽和磚紅 */
+    --light-brown: #A89A93;    /* 淺棕色 */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Georgia", "Noto Serif TC", "PingFang TC", serif;
+    background-color: var(--bg-beige);
+    color: var(--brown-text);
+    display: flex;
+    flex-direction: column;    /* 讓 header、主內容、footer 由上至下排列 */
+    min-height: 100vh;         /* 確保頁尾能被釘在最底部 */
+    line-height: 1.8;
+}
+
+/* ==========================================================================
+   2. 頂部導覽列樣式 (味遊台南) - 與其他頁面完全同步
+   ========================================================================== */
+.ccc {
+    background-color: #DAC7A2;
+    padding: 0.8rem 2rem;       
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.logo-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-img {
+    height: 55px;              
+    width: auto;
+    display: block;
+}
+
+.logo-text {
+    font-family: 'Noto Serif TC', Cambria, "Times New Roman", serif;
+    font-size: 22pt;           
+    font-weight: bold;
+    color: #3A2E2B;            
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 0px #fff, 2px 2px 0px #D4A373; 
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.bbb {
+    text-decoration: none;
+    color: #4A3E3D;            
+    padding-bottom: 6px; 
+    font-family: 'Noto Serif TC', "PingFang TC", "Microsoft JhengHei", serif;
+    font-size: 12pt;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    border-bottom: 2px solid transparent;
+}
+
+.bbb:hover, .bbb.current {
+    color: #A94442;            
+    border-bottom: 2px solid #A94442; 
+}
+
+/* 評論膠囊按鈕 */
+.fff.red-btn {
+    background-color: #A64438;
+    font-size: 11pt;
+    color: #ffffff !important;     
+    padding: 8px 20px;          
+    border-radius: 30px;            
+    font-weight: bold;           
+    text-decoration: none;       
+    display: inline-block;       
+    box-shadow: 0 4px 10px rgba(166, 68, 56, 0.2);
+    transition: all 0.2s ease;
+}
+
+.fff.red-btn:hover {
+    background-color: #8C352B;
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   3. 主內容包裝區（負責把卡片完美居中）
+   ========================================================================== */
+.main-wrapper {
+    flex: 1;                   /* 自動推擠剩餘空間，推開 footer */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;        /* 上下留白，避免緊貼導覽列與頁尾 */
+}
+
+/* 成功頁面主容器 */
+.success-container {
+    max-width: 600px;
+    width: 100%;
+    background-color: var(--card-beige);
+    border: 1px solid var(--light-brown);
+    box-shadow: 0 12px 35px rgba(74, 62, 61, 0.12);
+    border-radius: 4px;
+    padding: 24px; 
+}
+
+/* 復古風內邊框設計 */
+.inner-border {
+    border: 1px dashed var(--light-brown);
+    padding: 50px 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 磚紅色的鋼筆信件圖標 */
+.success-icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 25px;
+    opacity: 0.85;
+}
+
+h1 {
+    font-size: 1.8rem;
+    color: var(--dark-green); 
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 0.95rem;
+    color: var(--light-brown);
+    font-style: italic;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+}
+
+/* 分隔線 */
+.divider {
+    width: 60px;
+    border: none;
+    border-top: 2px solid var(--brick-red); 
+    margin-bottom: 30px;
+}
+
+/* 訊息內容 */
+.success-message {
+    font-size: 1rem;
+    color: var(--brown-text);
+    text-align: justify;
+    max-width: 460px;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+/* 強調文字（時間） */
+.highlight {
+    color: var(--brick-red);
+    font-weight: bold;
+}
+
+/* 返回按鈕：採用沉穩的墨綠色 */
+.back-btn {
+    display: inline-block;
+    padding: 12px 40px;
+    background-color: var(--dark-green);
+    color: var(--bg-beige);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.back-btn:hover {
+    background-color: transparent;
+    color: var(--dark-green);
+    border-color: var(--dark-green);
+}
+
+/* ==========================================================================
+   4. 頁尾樣式 (Footer)
+   ========================================================================== */
+.site-footer {
+    background-color: #2A362D; /* 深墨綠色結尾 */
+    color: #E6E1D6;            
+    width: 100%;
+    margin-top: auto;          
+}
+.footer-content {
+    max-width: 1200px;         
+    margin: 0 auto;            
+    padding: 25px 20px;        
+    text-align: center;        
+    font-size: 11pt;           
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   5. RWD 響應式設計
+   ========================================================================== */
+@media (max-width: 768px) {
+    .ccc {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+    .logo-img {
+        height: 35px;
+    }
+    .logo-text {
+        font-size: 16pt;
+        letter-spacing: 1px;
+    }
+    .inner-border {
+        padding: 35px 20px;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+</style>
+</head>
+<body>
+
+    <header class="ccc">
+        <div class="logo-box">
+            <img src="Home Logo.png" alt="LOGO" class="logo-img">
+            <span class="logo-text">味遊台南</span>
+        </div>
+        <nav class="nav-links">
+			<a href="index.html" class="bbb">首頁</a>
+			<a href="Home3.html" class="bbb">新聞</a>
+			<a href="show_post.html" class="bbb">評論區</a>
+		    <a href="Home4.html" class="bbb current">聯絡我們</a>
+			<a href="home2.html" class="bbb">關於我們</a>
+			<a href="post.html" class="fff red-btn">評論</a>
+        </nav>
+    </header>
+
+    <div class="main-wrapper">
+        <div class="success-container">
+            <div class="inner-border">
+                
+                <div class="success-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 6C22 4.9 21.1 4 20 4H4C2.9 4 2 4.9 2 6M22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6M22 6L12 13L2 6" 
+                             stroke="#8C4A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+
+                <h1>訊息已妥善收悉</h1>
+                <p class="subtitle">致 關心歷史與時間的旅人</p>
+                
+                <hr class="divider">
+
+                <p class="success-message">
+                    感謝您的來信。您所留下的文字已隨著時間的軌道安全抵達。我們的團隊將會如同審視珍貴史料般，細細閱讀您的訊息，並於 <span class="highlight">2-3 個工作天內</span> 透過電子郵件與您回覆。
+                </p>
+
+                <div class="action-space">
+                    <a href="home.php" class="back-btn">返回主頁</a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>© 2026 味遊台南 版權所有 | 聯絡我們：service@stust.edu.tw <br>
+            作者：4B3F0001 王凱均　4B3F0056 張馨</p>
+        </div>
+    </footer>
+
+</body>
+</html>
